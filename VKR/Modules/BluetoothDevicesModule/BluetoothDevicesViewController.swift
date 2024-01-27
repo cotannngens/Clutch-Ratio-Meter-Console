@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BluetoothDevicesViewController: UIViewController {
+final class BluetoothDevicesViewController: UIViewController {
     
     private lazy var bluetoothDevicesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -16,8 +16,15 @@ class BluetoothDevicesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
+        tableView.refreshControl = refreshControl
         tableView.registerWithType(cell: BluetoothDeviceTableViewCell.self)
         return tableView
+    }()
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshDevices), for: .valueChanged)
+        return refreshControl
     }()
     
     internal var structure: TableViewStructure? {
@@ -28,13 +35,14 @@ class BluetoothDevicesViewController: UIViewController {
         }
     }
     
-    private let blueetoothManager = BluetoothManager.shared
+    internal let blueetoothManager = BluetoothManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         updateStructure()
+        bind()
         blueetoothManager.shouldReloadTable = { [weak self] in
             self?.updateStructure()
         }
@@ -48,48 +56,17 @@ class BluetoothDevicesViewController: UIViewController {
         }
     }
     
-    private func updateStructure() {
-        let cellsStructure = TableViewStructure()
-        var cellModels: [BaseTableViewCellModel] = []
-        
-        blueetoothManager.availablePeripheales.forEach {
-            let bluetoothDeviceModel = BluetoothDeviceTableViewCellModel(deviceName: $0.name ?? "")
-            cellModels.append(bluetoothDeviceModel)
+    private func bind() {
+        blueetoothManager.shouldReloadTable = { [weak self] in
+            self?.updateStructure()
         }
         
-        var cellsSection = TableViewSectionModel(cellModels: cellModels)
-        cellsStructure.addSection(section: cellsSection)
-        structure = cellsStructure
-    }
-}
-
-extension BluetoothDevicesViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let structure = structure else { return 0 }
-        return tableView.numberOfSections(in: structure)
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let structure = structure else { return 0 }
-        return tableView.numberOfRows(in: structure, section: section)
+        blueetoothManager.willStopScanning = { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let structure = structure else { return UITableViewCell() }
-        return tableView.dequeueReusableCell(with: structure, indexPath: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let structure = structure else { return 60 }
-        return structure.cellModel(for: indexPath).height
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        blueetoothManager.connectPeripheral(with: indexPath.row)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
+    @objc private func refreshDevices() {
+        blueetoothManager.scanForDevices()
     }
 }

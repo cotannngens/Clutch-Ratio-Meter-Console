@@ -7,12 +7,13 @@
 
 import UIKit
 import CoreBluetooth
+import ProgressHUD
 
 final class BluetoothManager: NSObject {
     
     static let shared = BluetoothManager()
     
-    private var peripheral: CBPeripheral?
+    var currentPeripheral: CBPeripheral?
     private var characteristic: CBCharacteristic?
     private var manager: CBCentralManager?
     private let serviceUUID = CBUUID(string: "0xFFE0")
@@ -25,6 +26,7 @@ final class BluetoothManager: NSObject {
     }
     
     var shouldReloadTable: (() -> Void)?
+    var willStopScanning: (() -> Void)?
     
     override init() {
         super.init()
@@ -40,10 +42,12 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("Did discover \(peripheral)")
-        if let peripheralName = peripheral.name, peripheralName.contains(nameIdentifier) {
-            if !availablePeripheales.contains(peripheral) {
-                availablePeripheales.append(peripheral)
-            }
+        
+        if let peripheralName = peripheral.name, peripheralName.contains(nameIdentifier), !availablePeripheales.contains(peripheral) {
+            availablePeripheales.append(peripheral)
+            
+            guard let lastUsedPeriphealeIndex = availablePeripheales.firstIndex(where: { $0.identifier.uuidString == UserDefaults.lastUsedDeviceId }), currentPeripheral == nil else { return }
+            connectPeripheral(with: lastUsedPeriphealeIndex)
         }
     }
     
@@ -51,9 +55,12 @@ extension BluetoothManager: CBCentralManagerDelegate {
         switch central.state {
         case .poweredOff:
             print("Bluetooth is switched off")
+            disconnectPeripheral(shouldForgetLastDevice: false)
+            availablePeripheales = []
+            shouldReloadTable?()
         case .poweredOn:
             print("Bluetooth is switched on")
-            manager?.scanForPeripherals(withServices: nil, options: nil)
+            scanForDevices()
         case .unsupported:
             print("Bluetooth is not supported")
         default:
@@ -62,16 +69,20 @@ extension BluetoothManager: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        print("Did connect to \(peripheral)")
         peripheral.discoverServices([serviceUUID])
+        UserDefaults.lastUsedDeviceId = peripheral.identifier.uuidString
+        shouldReloadTable?()
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        self.peripheral = nil
-        characteristic = nil
+        print("Did disconnect to \(peripheral)")
+        shouldReloadTable?()
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print(error!)
+        ProgressHUD.failed("Failed to connect \(peripheral.name ?? "")", interaction: true, delay: 1.0)
     }
 }
 
@@ -100,16 +111,32 @@ extension BluetoothManager: CBPeripheralDelegate {
 
 extension BluetoothManager {
     func connectPeripheral(with index: Int) {
+        disconnectPeripheral()
         guard index < availablePeripheales.count else { return }
-        manager?.stopScan()
-        peripheral = availablePeripheales[index]
-        print("Will connect to \(peripheral)")
-        peripheral?.delegate = self
-        manager?.connect(peripheral!, options: nil)
+        currentPeripheral = availablePeripheales[index]
+        currentPeripheral?.delegate = self
+        print("Will connect to \(currentPeripheral)")
+        manager?.connect(currentPeripheral!, options: nil)
     }
     
-    func disconnectPeripheral() {
-        guard let peripheral = peripheral else {return}
+    func disconnectPeripheral(shouldForgetLastDevice: Bool = true) {
+        guard let peripheral = currentPeripheral else {return}
         manager?.cancelPeripheralConnection(peripheral)
+        currentPeripheral = nil
+        characteristic = nil
+        UserDefaults.lastUsedDeviceId = shouldForgetLastDevice ? "" : UserDefaults.lastUsedDeviceId
+    }
+    
+    func scanForDevices() {
+        manager?.stopScan()
+        manager?.scanForPeripherals(withServices: nil, options: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { [weak self] in
+            self?.stopScanning()
+        }
+    }
+    
+    func stopScanning() {
+        manager?.stopScan()
+        willStopScanning?()
     }
 }

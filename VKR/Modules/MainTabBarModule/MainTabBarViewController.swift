@@ -31,5 +31,6 @@ final class MainTabBarViewController: UITabBarController {
                                               tag: 2)
         
         setViewControllers([bluetoothVC, settingVC], animated: true)
+        selectedIndex = UserDefaults.lastUsedDeviceId.isEmpty ? 0 : 1
     }
 }
