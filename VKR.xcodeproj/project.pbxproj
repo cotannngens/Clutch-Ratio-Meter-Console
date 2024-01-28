@@ -14,11 +14,11 @@
 		ED42F8DE2B5BEF0B00F68230 /* IndicatorTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8DD2B5BEF0B00F68230 /* IndicatorTableCellModel.swift */; };
 		ED42F8E02B5BEF2B00F68230 /* IndicatorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8DF2B5BEF2B00F68230 /* IndicatorTableCell.swift */; };
 		ED42F8E22B5BEF5400F68230 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8E12B5BEF5400F68230 /* BaseTableViewCell.swift */; };
-		ED42F8E42B5BEFC700F68230 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8E32B5BEFC700F68230 /* UIColorExtension.swift */; };
 		ED42F8F22B5BF6E300F68230 /* BluetoothDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8F12B5BF6E300F68230 /* BluetoothDeviceTableViewCell.swift */; };
 		ED42F8F42B5BF6EA00F68230 /* BluetoothDeviceTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8F32B5BF6EA00F68230 /* BluetoothDeviceTableViewCellModel.swift */; };
 		ED42F8F62B5BF90800F68230 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8F52B5BF90800F68230 /* UIViewExtension.swift */; };
 		ED42F8FF2B5DAD1E00F68230 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8FE2B5DAD1E00F68230 /* MainTabBarViewController.swift */; };
+		ED58B2BA2B66B365004489C4 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED58B2B92B66B365004489C4 /* Resources.swift */; };
 		ED8115CD2B5BD1B30031BBC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8115CC2B5BD1B30031BBC6 /* AppDelegate.swift */; };
 		ED8115CF2B5BD1B30031BBC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8115CE2B5BD1B30031BBC6 /* SceneDelegate.swift */; };
 		ED8115D12B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8115D02B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift */; };
@@ -40,11 +40,11 @@
 		ED42F8DD2B5BEF0B00F68230 /* IndicatorTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorTableCellModel.swift; sourceTree = "<group>"; };
 		ED42F8DF2B5BEF2B00F68230 /* IndicatorTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorTableCell.swift; sourceTree = "<group>"; };
 		ED42F8E12B5BEF5400F68230 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		ED42F8E32B5BEFC700F68230 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		ED42F8F12B5BF6E300F68230 /* BluetoothDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDeviceTableViewCell.swift; sourceTree = "<group>"; };
 		ED42F8F32B5BF6EA00F68230 /* BluetoothDeviceTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDeviceTableViewCellModel.swift; sourceTree = "<group>"; };
 		ED42F8F52B5BF90800F68230 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		ED42F8FE2B5DAD1E00F68230 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		ED58B2B92B66B365004489C4 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		ED8115C92B5BD1B30031BBC6 /* VKR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8115CC2B5BD1B30031BBC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED8115CE2B5BD1B30031BBC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +133,7 @@
 			children = (
 				ED8115DA2B5BD1B40031BBC6 /* Info.plist */,
 				ED8115D52B5BD1B40031BBC6 /* Assets.xcassets */,
+				ED58B2B92B66B365004489C4 /* Resources.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -221,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				ED42F8D42B5BEDAA00F68230 /* UITableViewExtension.swift */,
-				ED42F8E32B5BEFC700F68230 /* UIColorExtension.swift */,
 				ED42F8F52B5BF90800F68230 /* UIViewExtension.swift */,
 				EDB90BBA2B652F65008EED9A /* UserDefaultsExtension.swift */,
 			);
@@ -330,8 +330,8 @@
 			files = (
 				ED42F8DA2B5BEEA200F68230 /* TableViewSectionModel.swift in Sources */,
 				ED42F8F42B5BF6EA00F68230 /* BluetoothDeviceTableViewCellModel.swift in Sources */,
-				ED42F8E42B5BEFC700F68230 /* UIColorExtension.swift in Sources */,
 				EDA5637F2B5BD8C400207249 /* BluetoothManager.swift in Sources */,
+				ED58B2BA2B66B365004489C4 /* Resources.swift in Sources */,
 				ED42F8DE2B5BEF0B00F68230 /* IndicatorTableCellModel.swift in Sources */,
 				ED42F8F22B5BF6E300F68230 /* BluetoothDeviceTableViewCell.swift in Sources */,
 				ED42F8F62B5BF90800F68230 /* UIViewExtension.swift in Sources */,

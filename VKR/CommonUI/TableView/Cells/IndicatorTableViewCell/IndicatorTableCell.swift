@@ -13,7 +13,7 @@ final class IndicatorTableСell: BaseTableViewCell {
     private var inidicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.style = .large
-        view.tintColor = ColorTheme.commonBlack
+        view.tintColor = Resources.ColorTheme.commonBlack
         return view
     }()
 

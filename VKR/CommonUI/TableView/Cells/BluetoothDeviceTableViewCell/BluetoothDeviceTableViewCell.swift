@@ -13,15 +13,15 @@ final class BluetoothDeviceTableViewCell: BaseTableViewCell {
     private lazy var deviceNameLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        view.textColor = ColorTheme.commonBlack
+        view.textColor = Resources.ColorTheme.commonBlack
         view.textAlignment = .left
         view.numberOfLines = 1
         return view
     }()
 
     private lazy var stateImageView: UIImageView = {
-        let view = UIImageView(image: UIImage(systemName: "circle.fill")?.withRenderingMode(.alwaysTemplate))
-        view.tintColor = ColorTheme.green
+        let view = UIImageView(image: Resources.Images.deviceConnectedIcon)
+        view.tintColor = Resources.ColorTheme.green
         view.isHidden = true
         return view
     }()
@@ -32,7 +32,7 @@ final class BluetoothDeviceTableViewCell: BaseTableViewCell {
     }
 
     private func setupView() {
-        contentView.backgroundColor = ColorTheme.backgroundUpperLayer
+        contentView.backgroundColor = Resources.ColorTheme.backgroundUpperLayer
         contentView.addSubviews(deviceNameLabel, stateImageView)
 
         deviceNameLabel.snp.makeConstraints { make in

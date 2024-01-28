@@ -11,7 +11,7 @@ final class BluetoothDevicesViewController: UIViewController {
 
     private lazy var bluetoothDevicesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.backgroundColor = ColorTheme.backgroundBottomLayer
+        tableView.backgroundColor = Resources.ColorTheme.backgroundBottomLayer
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
@@ -46,7 +46,7 @@ final class BluetoothDevicesViewController: UIViewController {
     }
 
     private func setupView() {
-        view.backgroundColor = ColorTheme.backgroundBottomLayer
+        view.backgroundColor = Resources.ColorTheme.backgroundBottomLayer
         view.addSubview(bluetoothDevicesTableView)
 
         bluetoothDevicesTableView.snp.makeConstraints { $0.edges.equalToSuperview() }
