@@ -18,7 +18,7 @@ extension BluetoothDevicesViewController {
             cellModels.append(bluetoothDeviceModel)
         }
 
-        var cellsSection = TableViewSectionModel(cellModels: cellModels)
+        let cellsSection = TableViewSectionModel(cellModels: cellModels)
         cellsStructure.addSection(section: cellsSection)
         structure = cellsStructure
     }

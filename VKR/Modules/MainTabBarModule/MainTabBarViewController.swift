@@ -17,20 +17,24 @@ final class MainTabBarViewController: UITabBarController {
 
     private func setupView() {
         tabBar.clipsToBounds = false
-        tabBar.backgroundColor = Resources.ColorTheme.backgroundUpperLayer
-        tabBar.unselectedItemTintColor = Resources.ColorTheme.commonBlack
-        tabBar.tintColor = Resources.ColorTheme.accent
+        tabBar.backgroundColor = UIColor.backgroundUpperLayer
+        tabBar.unselectedItemTintColor = UIColor.commonBlack
+        tabBar.tintColor = UIColor.accent
 
         let bluetoothVC = BluetoothDevicesViewController()
         bluetoothVC.tabBarItem = UITabBarItem(title: "Bluetooth",
                                               image: Resources.Images.bluetoothTabBarIcon,
                                               tag: 1)
+        let userLocationVC = UserLocationViewController()
+        userLocationVC.tabBarItem = UITabBarItem(title: "Location",
+                                            image: Resources.Images.userLocationTabBarIcon,
+                                            tag: 2)
         let settingVC = UIViewController()
         settingVC.tabBarItem = UITabBarItem(title: "Settings",
                                             image: Resources.Images.settingsTabBarIcon,
-                                            tag: 2)
+                                            tag: 3)
 
-        setViewControllers([bluetoothVC, settingVC], animated: true)
+        setViewControllers([bluetoothVC, userLocationVC, settingVC], animated: true)
         selectedIndex = UserDefaults.lastUsedDeviceId.isEmpty ? 0 : 1
     }
 }
