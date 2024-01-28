@@ -12,12 +12,12 @@ extension BluetoothDevicesViewController {
     internal func updateStructure() {
         let cellsStructure = TableViewStructure()
         var cellModels: [BaseTableViewCellModel] = []
-        
+
         blueetoothManager.availablePeripheales.forEach {
             let bluetoothDeviceModel = BluetoothDeviceTableViewCellModel(deviceName: $0.name ?? "", connectionState: $0.state)
             cellModels.append(bluetoothDeviceModel)
         }
-        
+
         var cellsSection = TableViewSectionModel(cellModels: cellModels)
         cellsStructure.addSection(section: cellsSection)
         structure = cellsStructure
@@ -35,17 +35,17 @@ extension BluetoothDevicesViewController: UITableViewDelegate, UITableViewDataSo
         guard let structure = structure else { return 0 }
         return tableView.numberOfRows(in: structure, section: section)
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let structure = structure else { return UITableViewCell() }
         return tableView.dequeueReusableCell(with: structure, indexPath: indexPath)
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let structure = structure else { return 60 }
         return structure.cellModel(for: indexPath).height
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard blueetoothManager.availablePeripheales[indexPath.row] != blueetoothManager.currentPeripheral else {
             blueetoothManager.disconnectPeripheral()
@@ -53,7 +53,7 @@ extension BluetoothDevicesViewController: UITableViewDelegate, UITableViewDataSo
         }
         blueetoothManager.connectPeripheral(with: indexPath.row)
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
     }

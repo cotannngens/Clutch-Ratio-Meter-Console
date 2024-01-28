@@ -8,11 +8,11 @@
 import Foundation
 
 extension UserDefaults {
-    
+
     enum Keys: String, CaseIterable {
         case lastUsedDeviceId
     }
-    
+
     static var lastUsedDeviceId: String {
         get {
             return UserDefaults.standard.string(forKey: Keys.lastUsedDeviceId.rawValue) ?? ""

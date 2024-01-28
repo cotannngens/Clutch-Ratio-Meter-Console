@@ -8,17 +8,16 @@
 import UIKit
 
 public struct TableViewSectionModel {
-    
+
     public var heightForHeader: CGFloat = 0
     public var heightForFooter: CGFloat = 0
-    
+
     public var viewForHeader: UIView?
     public var viewForFooter: UIView?
-    
+
     public var cellModels: [BaseTableViewCellModel]
 
     public init(cellModels: [BaseTableViewCellModel]) {
         self.cellModels = cellModels
     }
 }
-

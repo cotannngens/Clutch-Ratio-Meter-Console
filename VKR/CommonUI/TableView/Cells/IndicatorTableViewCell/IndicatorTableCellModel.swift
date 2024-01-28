@@ -11,7 +11,7 @@ final class IndicatorTableСellModel: BaseTableViewCellModel {
     override var cellIdentifier: String {
         String(describing: IndicatorTableСell.self)
     }
-    
+
     init() {
         super.init()
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 final class BluetoothDevicesViewController: UIViewController {
-    
+
     private lazy var bluetoothDevicesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = ColorTheme.backgroundBottomLayer
@@ -20,13 +20,13 @@ final class BluetoothDevicesViewController: UIViewController {
         tableView.registerWithType(cell: BluetoothDeviceTableViewCell.self)
         return tableView
     }()
-    
+
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshDevices), for: .valueChanged)
         return refreshControl
     }()
-    
+
     internal var structure: TableViewStructure? {
         didSet {
             DispatchQueue.main.async {
@@ -34,38 +34,33 @@ final class BluetoothDevicesViewController: UIViewController {
             }
         }
     }
-    
+
     internal let blueetoothManager = BluetoothManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         updateStructure()
         bind()
-        blueetoothManager.shouldReloadTable = { [weak self] in
-            self?.updateStructure()
-        }
     }
 
     private func setupView() {
         view.backgroundColor = ColorTheme.backgroundBottomLayer
         view.addSubview(bluetoothDevicesTableView)
-        bluetoothDevicesTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+
+        bluetoothDevicesTableView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
-    
     private func bind() {
         blueetoothManager.shouldReloadTable = { [weak self] in
             self?.updateStructure()
         }
-        
+
         blueetoothManager.willStopScanning = { [weak self] in
             self?.refreshControl.endRefreshing()
         }
     }
-    
+
     @objc private func refreshDevices() {
         blueetoothManager.scanForDevices()
     }
