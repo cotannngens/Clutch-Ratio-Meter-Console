@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED3512BE2BAEEC240055222B /* OutputDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3512BD2BAEEC240055222B /* OutputDataModel.swift */; };
 		ED42F8D52B5BEDAA00F68230 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8D42B5BEDAA00F68230 /* UITableViewExtension.swift */; };
 		ED42F8D82B5BEE3000F68230 /* TableViewStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8D72B5BEE3000F68230 /* TableViewStructure.swift */; };
 		ED42F8DA2B5BEEA200F68230 /* TableViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8D92B5BEEA200F68230 /* TableViewSectionModel.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED3512BD2BAEEC240055222B /* OutputDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputDataModel.swift; sourceTree = "<group>"; };
 		ED42F8D42B5BEDAA00F68230 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		ED42F8D72B5BEE3000F68230 /* TableViewStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewStructure.swift; sourceTree = "<group>"; };
 		ED42F8D92B5BEEA200F68230 /* TableViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionModel.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				EDA5637E2B5BD8C400207249 /* BluetoothManager.swift */,
+				ED3512BD2BAEEC240055222B /* OutputDataModel.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				ED42F8F22B5BF6E300F68230 /* BluetoothDeviceTableViewCell.swift in Sources */,
 				ED42F8F62B5BF90800F68230 /* UIViewExtension.swift in Sources */,
 				ED8115D12B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift in Sources */,
+				ED3512BE2BAEEC240055222B /* OutputDataModel.swift in Sources */,
 				ED42F8DC2B5BEEC700F68230 /* BaseTableViewCellModel.swift in Sources */,
 				EDB90BB92B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift in Sources */,
 				ED42F8FF2B5DAD1E00F68230 /* MainTabBarViewController.swift in Sources */,

@@ -14,6 +14,7 @@ final class BluetoothManager: NSObject {
     static let shared = BluetoothManager()
 
     var currentPeripheral: CBPeripheral?
+    var outputDataModel = OutputDataModel()
     private var characteristic: CBCharacteristic?
     private var manager: CBCentralManager?
     private let serviceUUID = CBUUID(string: "0xFFE0")
@@ -91,7 +92,7 @@ extension BluetoothManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard let services = peripheral.services else { return }
         for service in services {
-            peripheral.discoverCharacteristics(nil, for: service)
+            peripheral.discoverCharacteristics([CBUUID(string: "0xFFE1")], for: service)
         }
     }
 
@@ -102,18 +103,50 @@ extension BluetoothManager: CBPeripheralDelegate {
             if characteristic.properties.contains(.read) {
                 peripheral.readValue(for: characteristic)
             }
+
             if characteristic.properties.contains(.notify) {
                 peripheral.setNotifyValue(true, for: characteristic)
+            }
+
+            if characteristic.properties.contains(.writeWithoutResponse) {
+
+            }
+
+            if characteristic.properties.contains(.write) {
+
             }
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-
+        let data = [UInt8](characteristic.value!)
+        if data.count == 20 {
+            outputDataModel.drivingWheelSpeed = (Float(data[1]) * 100 + Float(data[2])) / 10.0
+            outputDataModel.measuringWheelSpeed = (Float(data[3]) * 100 + Float(data[4])) / 10.0
+            outputDataModel.frictionCoeff = (Float(data[5]) * 100 + Float(data[6])) / 1000.0
+            outputDataModel.force = (Float(data[7]) * 100 + Float(data[8])) / 100.0
+            outputDataModel.current = (Float(data[9]) * 100 + Float(data[10])) / 10.0
+            outputDataModel.temperature = data[11] - 50
+            outputDataModel.gpsMode = GpsMode(rawValue: data[12])
+            outputDataModel.latitudeDeg = data[13]
+            outputDataModel.latitudeMin = data[14]
+            outputDataModel.latitudeMinFraq = data[15] * 100 + data[16]
+            outputDataModel.longitudeDeg = data[17]
+            outputDataModel.longitudeMin = data[18]
+            outputDataModel.longitudeMinFraq = data[19] * 100
+        } else if data.count == 6 {
+            if let longitudeMinFraq = outputDataModel.longitudeMinFraq {
+                outputDataModel.longitudeMinFraq = longitudeMinFraq + data[0]
+            }
+            outputDataModel.latitudeLetter = data[1]
+            outputDataModel.longitudeLetter = data[2]
+            outputDataModel.battery = data[3]
+        }
     }
 }
 
 extension BluetoothManager {
+
     func connectPeripheral(with index: Int) {
         disconnectPeripheral()
         guard index < availablePeripheales.count else { return }
