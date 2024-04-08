@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		ED3512BE2BAEEC240055222B /* OutputDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3512BD2BAEEC240055222B /* OutputDataModel.swift */; };
+		ED3512C12BAF04200055222B /* MeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3512C02BAF04200055222B /* MeasurementViewController.swift */; };
+		ED3512C32BAF04E20055222B /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3512C22BAF04E20055222B /* MeasurementView.swift */; };
+		ED3512C62BAF10BB0055222B /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = ED3512C52BAF10BB0055222B /* DGCharts */; };
 		ED42F8D52B5BEDAA00F68230 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8D42B5BEDAA00F68230 /* UITableViewExtension.swift */; };
 		ED42F8D82B5BEE3000F68230 /* TableViewStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8D72B5BEE3000F68230 /* TableViewStructure.swift */; };
 		ED42F8DA2B5BEEA200F68230 /* TableViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42F8D92B5BEEA200F68230 /* TableViewSectionModel.swift */; };
@@ -26,6 +29,8 @@
 		ED8115D12B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8115D02B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift */; };
 		ED8115D62B5BD1B40031BBC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8115D52B5BD1B40031BBC6 /* Assets.xcassets */; };
 		ED8115D92B5BD1B40031BBC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8115D72B5BD1B40031BBC6 /* LaunchScreen.storyboard */; };
+		ED97B3FD2BC4A2B200159506 /* MeasurementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97B3FC2BC4A2B200159506 /* MeasurementModel.swift */; };
+		ED97B3FF2BC4A97D00159506 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97B3FE2BC4A97D00159506 /* CommonButton.swift */; };
 		EDA563782B5BD62000207249 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EDA563772B5BD62000207249 /* SnapKit */; };
 		EDA5637D2B5BD62B00207249 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = EDA5637C2B5BD62B00207249 /* ProgressHUD */; };
 		EDA5637F2B5BD8C400207249 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5637E2B5BD8C400207249 /* BluetoothManager.swift */; };
@@ -36,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		ED3512BD2BAEEC240055222B /* OutputDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputDataModel.swift; sourceTree = "<group>"; };
+		ED3512C02BAF04200055222B /* MeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewController.swift; sourceTree = "<group>"; };
+		ED3512C22BAF04E20055222B /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
 		ED42F8D42B5BEDAA00F68230 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		ED42F8D72B5BEE3000F68230 /* TableViewStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewStructure.swift; sourceTree = "<group>"; };
 		ED42F8D92B5BEEA200F68230 /* TableViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionModel.swift; sourceTree = "<group>"; };
@@ -56,6 +63,8 @@
 		ED8115D52B5BD1B40031BBC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED8115D82B5BD1B40031BBC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED8115DA2B5BD1B40031BBC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED97B3FC2BC4A2B200159506 /* MeasurementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementModel.swift; sourceTree = "<group>"; };
+		ED97B3FE2BC4A97D00159506 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		EDA5637E2B5BD8C400207249 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		EDB90BB82B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothDevicesViewController+DataSource.swift"; sourceTree = "<group>"; };
 		EDB90BBA2B652F65008EED9A /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
@@ -68,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA5637D2B5BD62B00207249 /* ProgressHUD in Frameworks */,
+				ED3512C62BAF10BB0055222B /* DGCharts in Frameworks */,
 				EDA563782B5BD62000207249 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +85,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED3512BF2BAF03EF0055222B /* MeasurementModule */ = {
+			isa = PBXGroup;
+			children = (
+				ED3512C02BAF04200055222B /* MeasurementViewController.swift */,
+				ED3512C22BAF04E20055222B /* MeasurementView.swift */,
+				ED97B3FC2BC4A2B200159506 /* MeasurementModel.swift */,
+			);
+			path = MeasurementModule;
+			sourceTree = "<group>";
+		};
 		ED42F8D12B5BECEF00F68230 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				ED42F8D12B5BECEF00F68230 /* TableView */,
+				ED97B3FE2BC4A97D00159506 /* CommonButton.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -153,6 +174,7 @@
 		ED42F8FA2B5DABF600F68230 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				ED3512BF2BAF03EF0055222B /* MeasurementModule */,
 				ED42F8FB2B5DAC3000F68230 /* MainTabBarModule */,
 				ED42F9002B5DB38300F68230 /* BluetoothDevicesModule */,
 				ED58B2BD2B66B9A5004489C4 /* UserLocationModule */,
@@ -262,6 +284,7 @@
 			packageProductDependencies = (
 				EDA563772B5BD62000207249 /* SnapKit */,
 				EDA5637C2B5BD62B00207249 /* ProgressHUD */,
+				ED3512C52BAF10BB0055222B /* DGCharts */,
 			);
 			productName = VKR;
 			productReference = ED8115C92B5BD1B30031BBC6 /* VKR.app */;
@@ -294,6 +317,7 @@
 			packageReferences = (
 				EDA563762B5BD62000207249 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				EDA5637B2B5BD62B00207249 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				ED3512C42BAF10BA0055222B /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = ED8115CA2B5BD1B30031BBC6 /* Products */;
 			projectDirPath = "";
@@ -347,14 +371,17 @@
 				EDA5637F2B5BD8C400207249 /* BluetoothManager.swift in Sources */,
 				ED58B2BA2B66B365004489C4 /* Resources.swift in Sources */,
 				ED42F8DE2B5BEF0B00F68230 /* IndicatorTableCellModel.swift in Sources */,
+				ED97B3FD2BC4A2B200159506 /* MeasurementModel.swift in Sources */,
 				ED42F8F22B5BF6E300F68230 /* BluetoothDeviceTableViewCell.swift in Sources */,
 				ED42F8F62B5BF90800F68230 /* UIViewExtension.swift in Sources */,
 				ED8115D12B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift in Sources */,
 				ED3512BE2BAEEC240055222B /* OutputDataModel.swift in Sources */,
+				ED97B3FF2BC4A97D00159506 /* CommonButton.swift in Sources */,
 				ED42F8DC2B5BEEC700F68230 /* BaseTableViewCellModel.swift in Sources */,
 				EDB90BB92B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift in Sources */,
 				ED42F8FF2B5DAD1E00F68230 /* MainTabBarViewController.swift in Sources */,
 				ED58B2BC2B66B99E004489C4 /* UserLocationViewController.swift in Sources */,
+				ED3512C32BAF04E20055222B /* MeasurementView.swift in Sources */,
 				ED8115CD2B5BD1B30031BBC6 /* AppDelegate.swift in Sources */,
 				ED42F8E02B5BEF2B00F68230 /* IndicatorTableCell.swift in Sources */,
 				ED8115CF2B5BD1B30031BBC6 /* SceneDelegate.swift in Sources */,
@@ -362,6 +389,7 @@
 				ED42F8E22B5BEF5400F68230 /* BaseTableViewCell.swift in Sources */,
 				EDB90BBB2B652F65008EED9A /* UserDefaultsExtension.swift in Sources */,
 				ED42F8D82B5BEE3000F68230 /* TableViewStructure.swift in Sources */,
+				ED3512C12BAF04200055222B /* MeasurementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +614,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		ED3512C42BAF10BA0055222B /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		EDA563762B5BD62000207249 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -605,6 +641,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		ED3512C52BAF10BB0055222B /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED3512C42BAF10BA0055222B /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
 		EDA563772B5BD62000207249 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EDA563762B5BD62000207249 /* XCRemoteSwiftPackageReference "SnapKit" */;

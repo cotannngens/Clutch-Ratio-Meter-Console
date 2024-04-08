@@ -37,22 +37,19 @@ final class BluetoothDevicesViewController: UIViewController {
 
     internal let blueetoothManager = BluetoothManager.shared
 
+    override func loadView() {
+        view = bluetoothDevicesTableView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupView()
         updateStructure()
         bind()
     }
 
-    private func setupView() {
-        view.backgroundColor = UIColor.backgroundBottomLayer
-        view.addSubview(bluetoothDevicesTableView)
-
-        bluetoothDevicesTableView.snp.makeConstraints { $0.edges.equalToSuperview() }
-    }
     private func bind() {
-        blueetoothManager.shouldReloadTable = { [weak self] in
+        blueetoothManager.peripheralStatusChanged = { [weak self] in
             self?.updateStructure()
         }
 

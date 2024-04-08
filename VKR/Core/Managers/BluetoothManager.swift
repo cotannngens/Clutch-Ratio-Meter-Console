@@ -22,12 +22,13 @@ final class BluetoothManager: NSObject {
 
     var availablePeripheales = [CBPeripheral]() {
         didSet {
-            shouldReloadTable?()
+            peripheralStatusChanged?()
         }
     }
 
-    var shouldReloadTable: (() -> Void)?
+    var peripheralStatusChanged: (() -> Void)?
     var willStopScanning: (() -> Void)?
+    var dataRecieved: (() -> Void)?
 
     override init() {
         super.init()
@@ -58,7 +59,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
             print("Bluetooth is switched off")
             disconnectPeripheral(shouldForgetLastDevice: false)
             availablePeripheales = []
-            shouldReloadTable?()
+            peripheralStatusChanged?()
         case .poweredOn:
             print("Bluetooth is switched on")
             scanForDevices()
@@ -73,12 +74,12 @@ extension BluetoothManager: CBCentralManagerDelegate {
         print("Did connect to \(peripheral)")
         peripheral.discoverServices([serviceUUID])
         UserDefaults.lastUsedDeviceId = peripheral.identifier.uuidString
-        shouldReloadTable?()
+        peripheralStatusChanged?()
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Did disconnect to \(peripheral)")
-        shouldReloadTable?()
+        peripheralStatusChanged?()
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -134,6 +135,7 @@ extension BluetoothManager: CBPeripheralDelegate {
             outputDataModel.longitudeDeg = data[17]
             outputDataModel.longitudeMin = data[18]
             outputDataModel.longitudeMinFraq = data[19] * 100
+            dataRecieved?()
         } else if data.count == 6 {
             if let longitudeMinFraq = outputDataModel.longitudeMinFraq {
                 outputDataModel.longitudeMinFraq = longitudeMinFraq + data[0]
@@ -141,6 +143,7 @@ extension BluetoothManager: CBPeripheralDelegate {
             outputDataModel.latitudeLetter = data[1]
             outputDataModel.longitudeLetter = data[2]
             outputDataModel.battery = data[3]
+            dataRecieved?()
         }
     }
 }
@@ -152,7 +155,7 @@ extension BluetoothManager {
         guard index < availablePeripheales.count else { return }
         currentPeripheral = availablePeripheales[index]
         currentPeripheral?.delegate = self
-        print("Will connect to \(currentPeripheral)")
+        print("Will connect to \(String(describing: currentPeripheral))")
         manager?.connect(currentPeripheral!, options: nil)
     }
 

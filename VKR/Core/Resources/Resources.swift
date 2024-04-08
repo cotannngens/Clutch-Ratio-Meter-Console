@@ -9,6 +9,7 @@ import UIKit
 
 enum Resources {
     enum Images {
+        static var measurementTabBarIcon = UIImage(systemName: "chart.xyaxis.line")
         static var bluetoothTabBarIcon = UIImage(systemName: "dot.radiowaves.left.and.right")
         static var settingsTabBarIcon = UIImage(systemName: "gearshape")
         static var userLocationTabBarIcon = UIImage(systemName: "mappin.circle")
