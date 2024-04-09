@@ -13,11 +13,11 @@ final class MeasurementView: UIView {
 
     private lazy var chartView: LineChartView = {
         let view = LineChartView()
-        view.xAxis.gridColor = UIColor.commonBlack.withAlphaComponent(0.25)
+        view.xAxis.gridColor = UIColor.gray.withAlphaComponent(0.5)
         view.xAxis.drawAxisLineEnabled = false
         view.xAxis.drawLabelsEnabled = false
 
-        view.leftAxis.gridColor = UIColor.commonBlack.withAlphaComponent(0.25)
+        view.leftAxis.gridColor = UIColor.gray.withAlphaComponent(0.5)
         view.leftAxis.drawAxisLineEnabled = false
         view.leftAxis.drawLabelsEnabled = false
 
@@ -31,7 +31,7 @@ final class MeasurementView: UIView {
 
         view.drawBordersEnabled = true
         view.borderLineWidth = 1
-        view.borderColor = UIColor.commonBlack.withAlphaComponent(0.25)
+        view.borderColor = UIColor.gray.withAlphaComponent(0.5)
         view.drawGridBackgroundEnabled = true
         view.gridBackgroundColor = UIColor.backgroundUpperLayer
         return view
@@ -41,7 +41,7 @@ final class MeasurementView: UIView {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         view.textAlignment = .center
-        view.textColor = UIColor.commonBlack
+        view.textColor = UIColor.gray
         view.numberOfLines = 1
         view.text = "No data available yet"
         view.isUserInteractionEnabled = false
@@ -101,9 +101,9 @@ final class MeasurementView: UIView {
         }
 
         measurementStateButton.snp.makeConstraints { make in
+            make.top.equalTo(chartView.snp.bottom).inset(-8)
             make.height.equalTo(48)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(safeArea).inset(10)
+            make.leading.trailing.equalToSuperview().inset(8)
         }
     }
 
