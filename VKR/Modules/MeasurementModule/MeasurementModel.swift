@@ -8,4 +8,5 @@
 struct MeasurementModel {
     var chartOffsetX: Double = 0
     var isMeasurementActive = false
+    var dataProtocol = [String]()
 }

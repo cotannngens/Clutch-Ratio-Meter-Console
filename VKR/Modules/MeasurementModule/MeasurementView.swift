@@ -53,7 +53,16 @@ final class MeasurementView: UIView {
         view.backgroundColor = UIColor.commonGreen
         view.title = "Start"
         view.isEnabled = false
-        view.addTarget(self, action: #selector(measurementbuttonTapped), for: .touchUpInside)
+        view.addTarget(self, action: #selector(measurementButtonTapped), for: .touchUpInside)
+        return view
+    }()
+
+    private lazy var sendProtocolButton: CommonButton = {
+        let view = CommonButton()
+        view.backgroundColor = UIColor.accent
+        view.title = "Share protocol"
+        view.isEnabled = false
+        view.addTarget(self, action: #selector(sendProtocolButtonTapped), for: .touchUpInside)
         return view
     }()
 
@@ -77,6 +86,7 @@ final class MeasurementView: UIView {
     }
 
     var measurementStatusChanged: ((Bool) -> Void)?
+    var sendProtocolTapped: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -89,7 +99,7 @@ final class MeasurementView: UIView {
         backgroundColor = UIColor.backgroundBottomLayer
         let safeArea = safeAreaLayoutGuide
 
-        addSubviews(chartView, noDataLabel, measurementStateButton)
+        addSubviews(chartView, noDataLabel, measurementStateButton, sendProtocolButton)
         chartView.snp.makeConstraints { make in
             make.top.equalTo(safeArea)
             make.leading.trailing.equalToSuperview()
@@ -102,6 +112,12 @@ final class MeasurementView: UIView {
 
         measurementStateButton.snp.makeConstraints { make in
             make.top.equalTo(chartView.snp.bottom).inset(-8)
+            make.height.equalTo(48)
+            make.leading.trailing.equalToSuperview().inset(8)
+        }
+
+        sendProtocolButton.snp.makeConstraints { make in
+            make.top.equalTo(measurementStateButton.snp.bottom).inset(-16)
             make.height.equalTo(48)
             make.leading.trailing.equalToSuperview().inset(8)
         }
@@ -123,10 +139,15 @@ final class MeasurementView: UIView {
         measurementStatusChanged?(isMeasurementActive)
         measurementStateButton.title = isMeasurementActive ? "Stop" : "Start"
         measurementStateButton.backgroundColor = isMeasurementActive ? UIColor.commonRed : UIColor.commonGreen
+        sendProtocolButton.isEnabled = !isMeasurementActive
     }
 
-    @objc private func measurementbuttonTapped() {
+    @objc private func measurementButtonTapped() {
         isMeasurementActive.toggle()
+    }
+
+    @objc private func sendProtocolButtonTapped() {
+        sendProtocolTapped?()
     }
 
     required init?(coder: NSCoder) {
