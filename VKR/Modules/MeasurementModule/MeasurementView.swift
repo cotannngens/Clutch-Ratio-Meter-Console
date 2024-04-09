@@ -34,10 +34,17 @@ final class MeasurementView: UIView {
         view.borderColor = UIColor.commonBlack.withAlphaComponent(0.25)
         view.drawGridBackgroundEnabled = true
         view.gridBackgroundColor = UIColor.backgroundUpperLayer
+        return view
+    }()
 
-        view.noDataText = "No data available yet"
-        view.noDataFont = UIFont.systemFont(ofSize: 16, weight: .medium)
-        view.noDataTextColor = UIColor.commonBlack
+    private lazy var noDataLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        view.textAlignment = .center
+        view.textColor = UIColor.commonBlack
+        view.numberOfLines = 1
+        view.text = "No data available yet"
+        view.isUserInteractionEnabled = false
         return view
     }()
 
@@ -82,11 +89,15 @@ final class MeasurementView: UIView {
         backgroundColor = UIColor.backgroundBottomLayer
         let safeArea = safeAreaLayoutGuide
 
-        addSubviews(chartView, measurementStateButton)
+        addSubviews(chartView, noDataLabel, measurementStateButton)
         chartView.snp.makeConstraints { make in
             make.top.equalTo(safeArea)
             make.leading.trailing.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.4)
+        }
+
+        noDataLabel.snp.makeConstraints { make in
+            make.center.equalTo(chartView)
         }
 
         measurementStateButton.snp.makeConstraints { make in
@@ -104,6 +115,7 @@ final class MeasurementView: UIView {
         dataSet.drawCirclesEnabled = false
         dataSet.mode = .cubicBezier
         chartView.data = LineChartData(dataSet: dataSet)
+        noDataLabel.isHidden = !dataEntries.isEmpty
     }
 
     private func updateUIWithMeasurementStatus() {
