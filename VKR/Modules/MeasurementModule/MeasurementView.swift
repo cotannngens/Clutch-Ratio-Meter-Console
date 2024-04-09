@@ -72,7 +72,7 @@ final class MeasurementView: UIView {
     var measurementAllowed = false {
         didSet {
             measurementStateButton.isEnabled = measurementAllowed
-            if !measurementAllowed { measurementAllowed = false }
+            if !measurementAllowed { isMeasurementActive = false }
         }
     }
 
