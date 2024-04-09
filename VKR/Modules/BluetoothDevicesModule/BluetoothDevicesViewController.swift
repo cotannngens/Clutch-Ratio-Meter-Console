@@ -9,28 +9,19 @@ import UIKit
 
 final class BluetoothDevicesViewController: UIViewController {
 
-    private lazy var bluetoothDevicesTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.backgroundColor = UIColor.backgroundBottomLayer
-        tableView.separatorStyle = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.showsVerticalScrollIndicator = false
-        tableView.refreshControl = refreshControl
-        tableView.registerWithType(cell: BluetoothDeviceTableViewCell.self)
-        return tableView
-    }()
-
-    private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshDevices), for: .valueChanged)
-        return refreshControl
+    internal lazy var bluetoothDevicesView: BluetoothDevicesView = {
+        let view = BluetoothDevicesView()
+        view.refreshAction = { [weak self] in
+            self?.blueetoothManager.scanForDevices()
+        }
+        view.setupTableDelegate(delegate: self)
+        return view
     }()
 
     internal var structure: TableViewStructure? {
         didSet {
             DispatchQueue.main.async {
-                self.bluetoothDevicesTableView.reloadData()
+                self.bluetoothDevicesView.reloadTableData()
             }
         }
     }
@@ -38,7 +29,7 @@ final class BluetoothDevicesViewController: UIViewController {
     internal let blueetoothManager = BluetoothManager.shared
 
     override func loadView() {
-        view = bluetoothDevicesTableView
+        view = bluetoothDevicesView
     }
 
     override func viewDidLoad() {
@@ -54,11 +45,7 @@ final class BluetoothDevicesViewController: UIViewController {
         }
 
         blueetoothManager.willStopScanning = { [weak self] in
-            self?.refreshControl.endRefreshing()
+            self?.bluetoothDevicesView.endRefreshing()
         }
-    }
-
-    @objc private func refreshDevices() {
-        blueetoothManager.scanForDevices()
     }
 }

@@ -37,6 +37,7 @@
 		EDB90BB92B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB90BB82B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift */; };
 		EDB90BBB2B652F65008EED9A /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB90BBA2B652F65008EED9A /* UserDefaultsExtension.swift */; };
 		EDCDDDDC2B6684CA00272D05 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EDCDDDDB2B6684CA00272D05 /* .swiftlint.yml */; };
+		EDF3F0022BC5B4DC000ACF39 /* BluetoothDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF3F0012BC5B4DC000ACF39 /* BluetoothDevicesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		EDB90BB82B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothDevicesViewController+DataSource.swift"; sourceTree = "<group>"; };
 		EDB90BBA2B652F65008EED9A /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		EDCDDDDB2B6684CA00272D05 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		EDF3F0012BC5B4DC000ACF39 /* BluetoothDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDevicesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 			children = (
 				ED8115D02B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift */,
 				EDB90BB82B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift */,
+				EDF3F0012BC5B4DC000ACF39 /* BluetoothDevicesView.swift */,
 			);
 			path = BluetoothDevicesModule;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				ED42F8DA2B5BEEA200F68230 /* TableViewSectionModel.swift in Sources */,
 				ED42F8F42B5BF6EA00F68230 /* BluetoothDeviceTableViewCellModel.swift in Sources */,
 				EDA5637F2B5BD8C400207249 /* BluetoothManager.swift in Sources */,
+				EDF3F0022BC5B4DC000ACF39 /* BluetoothDevicesView.swift in Sources */,
 				ED58B2BA2B66B365004489C4 /* Resources.swift in Sources */,
 				ED42F8DE2B5BEF0B00F68230 /* IndicatorTableCellModel.swift in Sources */,
 				ED97B3FD2BC4A2B200159506 /* MeasurementModel.swift in Sources */,

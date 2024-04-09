@@ -20,6 +20,7 @@ extension BluetoothDevicesViewController {
         let cellsSection = TableViewSectionModel(cellModels: cellModels)
         cellsStructure.addSection(section: cellsSection)
         structure = cellsStructure
+        bluetoothDevicesView.updateNoDevicesLabelVisability(!cellModels.isEmpty)
     }
 }
 
