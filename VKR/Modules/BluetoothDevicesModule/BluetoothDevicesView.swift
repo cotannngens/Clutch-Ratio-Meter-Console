@@ -53,16 +53,16 @@ final class BluetoothDevicesView: UIView {
         bluetoothDevicesTableView.snp.makeConstraints { $0.edges.equalToSuperview() }
         noDevicesLabel.snp.makeConstraints { $0.center.equalTo(safeArea) }
     }
-    
+
     func setupTableDelegate(delegate: UITableViewDelegate & UITableViewDataSource) {
         bluetoothDevicesTableView.dataSource = delegate
         bluetoothDevicesTableView.delegate = delegate
     }
-    
+
     func reloadTableData() {
         bluetoothDevicesTableView.reloadData()
     }
-    
+
     func updateNoDevicesLabelVisability(_ isHidden: Bool) {
         noDevicesLabel.isHidden = isHidden
     }
