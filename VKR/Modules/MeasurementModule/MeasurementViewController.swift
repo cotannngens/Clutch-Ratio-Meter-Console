@@ -37,6 +37,12 @@ final class MeasurementViewController: UIViewController {
         bind()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        toggleMeasurementAllowed()
+    }
+
     private func bind() {
         blueetoothManager.dataRecieved = { [weak self] in
             guard let self = self, self.measurementModel.isMeasurementActive else { return }
@@ -45,12 +51,15 @@ final class MeasurementViewController: UIViewController {
         }
 
         blueetoothManager.peripheralStatusChanged = { [weak self] in
-            self?.measurementView.measurementAllowed = self?.blueetoothManager.currentPeripheral != nil
+            self?.toggleMeasurementAllowed()
         }
     }
 }
 
 extension MeasurementViewController {
+    private func toggleMeasurementAllowed() {
+        measurementView.isMeasurementAllowed = blueetoothManager.currentPeripheral != nil
+    }
 
     private func updateChart() {
         guard let force = blueetoothManager.outputDataModel.force else { return }

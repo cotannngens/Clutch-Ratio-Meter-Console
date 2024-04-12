@@ -50,7 +50,7 @@ final class MeasurementView: UIView {
 
     private lazy var measurementStateButton: CommonButton = {
         let view = CommonButton()
-        view.backgroundColor = UIColor.commonGreen
+        view.enabledBackgroundColor = UIColor.commonGreen
         view.title = "Start"
         view.isEnabled = false
         view.addTarget(self, action: #selector(measurementButtonTapped), for: .touchUpInside)
@@ -59,7 +59,6 @@ final class MeasurementView: UIView {
 
     private lazy var sendProtocolButton: CommonButton = {
         let view = CommonButton()
-        view.backgroundColor = UIColor.accent
         view.title = "Share protocol"
         view.isEnabled = false
         view.addTarget(self, action: #selector(sendProtocolButtonTapped), for: .touchUpInside)
@@ -78,10 +77,14 @@ final class MeasurementView: UIView {
         }
     }
 
-    var measurementAllowed = false {
+    var isMeasurementAllowed = false {
         didSet {
-            measurementStateButton.isEnabled = measurementAllowed
-            if !measurementAllowed { isMeasurementActive = false }
+            if !isMeasurementAllowed { isMeasurementActive = false }
+            if isMeasurementActive {
+                measurementStateButton.backgroundColor = UIColor.commonRed
+            } else {
+                measurementStateButton.isEnabled = isMeasurementAllowed
+            }
         }
     }
 
@@ -135,11 +138,15 @@ final class MeasurementView: UIView {
     }
 
     private func updateUIWithMeasurementStatus() {
-        dataEntries = []
         measurementStatusChanged?(isMeasurementActive)
         measurementStateButton.title = isMeasurementActive ? "Stop" : "Start"
-        measurementStateButton.backgroundColor = isMeasurementActive ? UIColor.commonRed : UIColor.commonGreen
-        sendProtocolButton.isEnabled = !isMeasurementActive
+        if isMeasurementActive {
+            dataEntries = []
+            measurementStateButton.backgroundColor = UIColor.commonRed
+        } else {
+            measurementStateButton.isEnabled = isMeasurementAllowed
+        }
+        sendProtocolButton.isEnabled = !isMeasurementActive && !dataEntries.isEmpty
     }
 
     @objc private func measurementButtonTapped() {

@@ -26,6 +26,9 @@ public final class CommonButton: UIButton {
         }
     }
 
+    var enabledBackgroundColor: UIColor = UIColor.accent
+    var disabledBackgroundColor: UIColor = UIColor.gray.withAlphaComponent(0.5)
+
     override public var isEnabled: Bool {
         didSet {
             setupAppereance()
@@ -56,7 +59,7 @@ public final class CommonButton: UIButton {
     }
 
     private func setupAppereance() {
-        backgroundColor = isEnabled ? backgroundColor : UIColor.gray.withAlphaComponent(0.5)
+        backgroundColor = isEnabled ? enabledBackgroundColor : disabledBackgroundColor
         customTitleLabel.textColor = isEnabled ? UIColor.white : UIColor.gray
     }
 
