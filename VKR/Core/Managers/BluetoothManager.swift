@@ -169,8 +169,9 @@ extension BluetoothManager {
 
     func scanForDevices() {
         manager?.stopScan()
+        availablePeripheales = []
         manager?.scanForPeripherals(withServices: nil, options: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { [weak self] in
             self?.stopScanning()
         }
     }

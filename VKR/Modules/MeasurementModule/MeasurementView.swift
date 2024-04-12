@@ -19,7 +19,7 @@ final class MeasurementView: UIView {
 
         view.leftAxis.gridColor = UIColor.gray.withAlphaComponent(0.5)
         view.leftAxis.drawAxisLineEnabled = false
-        view.leftAxis.drawLabelsEnabled = false
+        view.leftAxis.drawLabelsEnabled = true
 
         view.rightAxis.enabled = false
         view.legend.enabled = false
