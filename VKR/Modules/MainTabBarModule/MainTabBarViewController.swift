@@ -22,20 +22,20 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.tintColor = UIColor.accent
 
         let measurementVC = MeasurementViewController()
-        measurementVC.tabBarItem = UITabBarItem(title: "Measurement",
+        measurementVC.tabBarItem = UITabBarItem(title: "measurement_tab_bar".translate(),
                                               image: Resources.Images.measurementTabBarIcon,
                                               tag: 1)
 
         let bluetoothVC = BluetoothDevicesViewController()
-        bluetoothVC.tabBarItem = UITabBarItem(title: "Bluetooth",
+        bluetoothVC.tabBarItem = UITabBarItem(title: "bluetooth_tab_bar".translate(),
                                               image: Resources.Images.bluetoothTabBarIcon,
                                               tag: 2)
         let userLocationVC = UserLocationViewController()
-        userLocationVC.tabBarItem = UITabBarItem(title: "Location",
+        userLocationVC.tabBarItem = UITabBarItem(title: "location_tab_bar".translate(),
                                             image: Resources.Images.userLocationTabBarIcon,
                                             tag: 3)
-        let settingVC = UIViewController()
-        settingVC.tabBarItem = UITabBarItem(title: "Settings",
+        let settingVC = SettingsViewController()
+        settingVC.tabBarItem = UITabBarItem(title: "settings_tab_bar".translate(),
                                             image: Resources.Images.settingsTabBarIcon,
                                             tag: 4)
 

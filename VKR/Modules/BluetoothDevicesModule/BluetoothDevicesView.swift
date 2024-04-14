@@ -13,7 +13,7 @@ final class BluetoothDevicesView: UIView {
     private lazy var bluetoothDevicesTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.backgroundColor = UIColor.backgroundBottomLayer
-        view.separatorStyle = .none
+        view.separatorStyle = .singleLine
         view.showsVerticalScrollIndicator = false
         view.refreshControl = refreshControl
         view.registerWithType(cell: BluetoothDeviceTableViewCell.self)
@@ -26,7 +26,7 @@ final class BluetoothDevicesView: UIView {
         view.textAlignment = .center
         view.textColor = UIColor.gray
         view.numberOfLines = 1
-        view.text = "No devices available"
+        view.text = "no_devices".translate()
         view.isUserInteractionEnabled = false
         return view
     }()

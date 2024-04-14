@@ -43,7 +43,7 @@ final class MeasurementView: UIView {
         view.textAlignment = .center
         view.textColor = UIColor.gray
         view.numberOfLines = 1
-        view.text = "No data available yet"
+        view.text = "chart_no_data".translate()
         view.isUserInteractionEnabled = false
         return view
     }()
@@ -51,7 +51,7 @@ final class MeasurementView: UIView {
     private lazy var measurementStateButton: CommonButton = {
         let view = CommonButton()
         view.enabledBackgroundColor = UIColor.commonGreen
-        view.title = "Start"
+        view.title = "button_start".translate()
         view.isEnabled = false
         view.addTarget(self, action: #selector(measurementButtonTapped), for: .touchUpInside)
         return view
@@ -59,7 +59,7 @@ final class MeasurementView: UIView {
 
     private lazy var sendProtocolButton: CommonButton = {
         let view = CommonButton()
-        view.title = "Share protocol"
+        view.title = "button_share".translate()
         view.isEnabled = false
         view.addTarget(self, action: #selector(sendProtocolButtonTapped), for: .touchUpInside)
         return view
@@ -139,7 +139,7 @@ final class MeasurementView: UIView {
 
     private func updateUIWithMeasurementStatus() {
         measurementStatusChanged?(isMeasurementActive)
-        measurementStateButton.title = isMeasurementActive ? "Stop" : "Start"
+        measurementStateButton.title = isMeasurementActive ? "button_stop".translate() : "button_start".translate()
         if isMeasurementActive {
             dataEntries = []
             measurementStateButton.backgroundColor = UIColor.commonRed

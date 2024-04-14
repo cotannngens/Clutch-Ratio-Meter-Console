@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED049A1A2BCA941E000B18EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED049A182BCA941E000B18EA /* Localizable.strings */; };
+		ED049A282BCA9A90000B18EA /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A272BCA9A90000B18EA /* StringExtension.swift */; };
+		ED049A2C2BCAAA48000B18EA /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A2B2BCAAA48000B18EA /* LocalizationService.swift */; };
+		ED049A2F2BCAAB3B000B18EA /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A2E2BCAAB3B000B18EA /* SettingsTableViewCell.swift */; };
+		ED049A312BCAAB44000B18EA /* SettingsTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A302BCAAB44000B18EA /* SettingsTableViewCellModel.swift */; };
+		ED049A342BCAAD52000B18EA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A332BCAAD52000B18EA /* SettingsViewController.swift */; };
+		ED049A362BCAAD5A000B18EA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A352BCAAD5A000B18EA /* SettingsView.swift */; };
+		ED049A382BCAAE23000B18EA /* SettingsViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A372BCAAE23000B18EA /* SettingsViewController+DataSource.swift */; };
+		ED049A3A2BCAAE5B000B18EA /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A392BCAAE5B000B18EA /* SettingsModel.swift */; };
+		ED049A3D2BCAB23D000B18EA /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A3C2BCAB23D000B18EA /* LanguageView.swift */; };
+		ED049A3F2BCAB249000B18EA /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A3E2BCAB249000B18EA /* LanguageViewController.swift */; };
+		ED049A412BCAB262000B18EA /* LanguageViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED049A402BCAB262000B18EA /* LanguageViewController+DataSource.swift */; };
 		ED3512BE2BAEEC240055222B /* OutputDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3512BD2BAEEC240055222B /* OutputDataModel.swift */; };
 		ED3512C12BAF04200055222B /* MeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3512C02BAF04200055222B /* MeasurementViewController.swift */; };
 		ED3512C32BAF04E20055222B /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3512C22BAF04E20055222B /* MeasurementView.swift */; };
@@ -41,6 +53,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED049A162BCA9376000B18EA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		ED049A192BCA941E000B18EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED049A202BCA9626000B18EA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED049A232BCA968F000B18EA /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		ED049A242BCA968F000B18EA /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ED049A252BCA96D9000B18EA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		ED049A262BCA96D9000B18EA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ED049A272BCA9A90000B18EA /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		ED049A2B2BCAAA48000B18EA /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
+		ED049A2E2BCAAB3B000B18EA /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		ED049A302BCAAB44000B18EA /* SettingsTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCellModel.swift; sourceTree = "<group>"; };
+		ED049A332BCAAD52000B18EA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		ED049A352BCAAD5A000B18EA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ED049A372BCAAE23000B18EA /* SettingsViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+DataSource.swift"; sourceTree = "<group>"; };
+		ED049A392BCAAE5B000B18EA /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		ED049A3C2BCAB23D000B18EA /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		ED049A3E2BCAB249000B18EA /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		ED049A402BCAB262000B18EA /* LanguageViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageViewController+DataSource.swift"; sourceTree = "<group>"; };
 		ED3512BD2BAEEC240055222B /* OutputDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputDataModel.swift; sourceTree = "<group>"; };
 		ED3512C02BAF04200055222B /* MeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewController.swift; sourceTree = "<group>"; };
 		ED3512C22BAF04E20055222B /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
@@ -87,6 +117,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED049A172BCA9388000B18EA /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				ED049A2B2BCAAA48000B18EA /* LocalizationService.swift */,
+				ED049A182BCA941E000B18EA /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		ED049A2D2BCAAB26000B18EA /* SettingsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED049A2E2BCAAB3B000B18EA /* SettingsTableViewCell.swift */,
+				ED049A302BCAAB44000B18EA /* SettingsTableViewCellModel.swift */,
+			);
+			path = SettingsTableViewCell;
+			sourceTree = "<group>";
+		};
+		ED049A322BCAAD3D000B18EA /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				ED049A3B2BCAB216000B18EA /* LanguageSelectionModule */,
+				ED049A392BCAAE5B000B18EA /* SettingsModel.swift */,
+				ED049A352BCAAD5A000B18EA /* SettingsView.swift */,
+				ED049A332BCAAD52000B18EA /* SettingsViewController.swift */,
+				ED049A372BCAAE23000B18EA /* SettingsViewController+DataSource.swift */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		ED049A3B2BCAB216000B18EA /* LanguageSelectionModule */ = {
+			isa = PBXGroup;
+			children = (
+				ED049A3C2BCAB23D000B18EA /* LanguageView.swift */,
+				ED049A3E2BCAB249000B18EA /* LanguageViewController.swift */,
+				ED049A402BCAB262000B18EA /* LanguageViewController+DataSource.swift */,
+			);
+			path = LanguageSelectionModule;
+			sourceTree = "<group>";
+		};
 		ED3512BF2BAF03EF0055222B /* MeasurementModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +180,7 @@
 		ED42F8D62B5BEDD300F68230 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				ED049A2D2BCAAB26000B18EA /* SettingsTableViewCell */,
 				ED42F8F02B5BF6D400F68230 /* BluetoothDeviceTableViewCell */,
 				ED42F8EF2B5BF6A000F68230 /* IndicatorTableViewCell */,
 				ED42F8EE2B5BF68500F68230 /* BaseTableViewCell */,
@@ -157,6 +228,7 @@
 		ED42F8F82B5DA97800F68230 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED049A172BCA9388000B18EA /* Localization */,
 				ED8115DA2B5BD1B40031BBC6 /* Info.plist */,
 				ED8115D52B5BD1B40031BBC6 /* Assets.xcassets */,
 				ED58B2B92B66B365004489C4 /* Resources.swift */,
@@ -176,6 +248,7 @@
 		ED42F8FA2B5DABF600F68230 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				ED049A322BCAAD3D000B18EA /* SettingsModule */,
 				ED3512BF2BAF03EF0055222B /* MeasurementModule */,
 				ED42F8FB2B5DAC3000F68230 /* MainTabBarModule */,
 				ED42F9002B5DB38300F68230 /* BluetoothDevicesModule */,
@@ -263,6 +336,7 @@
 				ED42F8D42B5BEDAA00F68230 /* UITableViewExtension.swift */,
 				ED42F8F52B5BF90800F68230 /* UIViewExtension.swift */,
 				EDB90BBA2B652F65008EED9A /* UserDefaultsExtension.swift */,
+				ED049A272BCA9A90000B18EA /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +389,9 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				"kk-KZ",
+				"zh-Hans",
 			);
 			mainGroup = ED8115C02B5BD1B30031BBC6;
 			packageReferences = (
@@ -337,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDCDDDDC2B6684CA00272D05 /* .swiftlint.yml in Resources */,
+				ED049A1A2BCA941E000B18EA /* Localizable.strings in Resources */,
 				ED8115D92B5BD1B40031BBC6 /* LaunchScreen.storyboard in Resources */,
 				ED8115D62B5BD1B40031BBC6 /* Assets.xcassets in Resources */,
 			);
@@ -373,37 +451,62 @@
 				ED42F8F42B5BF6EA00F68230 /* BluetoothDeviceTableViewCellModel.swift in Sources */,
 				EDA5637F2B5BD8C400207249 /* BluetoothManager.swift in Sources */,
 				EDF3F0022BC5B4DC000ACF39 /* BluetoothDevicesView.swift in Sources */,
+				ED049A3D2BCAB23D000B18EA /* LanguageView.swift in Sources */,
+				ED049A3F2BCAB249000B18EA /* LanguageViewController.swift in Sources */,
 				ED58B2BA2B66B365004489C4 /* Resources.swift in Sources */,
 				ED42F8DE2B5BEF0B00F68230 /* IndicatorTableCellModel.swift in Sources */,
 				ED97B3FD2BC4A2B200159506 /* MeasurementModel.swift in Sources */,
 				ED42F8F22B5BF6E300F68230 /* BluetoothDeviceTableViewCell.swift in Sources */,
+				ED049A382BCAAE23000B18EA /* SettingsViewController+DataSource.swift in Sources */,
 				ED42F8F62B5BF90800F68230 /* UIViewExtension.swift in Sources */,
 				ED8115D12B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift in Sources */,
 				ED3512BE2BAEEC240055222B /* OutputDataModel.swift in Sources */,
+				ED049A3A2BCAAE5B000B18EA /* SettingsModel.swift in Sources */,
 				ED97B3FF2BC4A97D00159506 /* CommonButton.swift in Sources */,
 				ED42F8DC2B5BEEC700F68230 /* BaseTableViewCellModel.swift in Sources */,
+				ED049A2C2BCAAA48000B18EA /* LocalizationService.swift in Sources */,
 				EDB90BB92B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift in Sources */,
 				ED42F8FF2B5DAD1E00F68230 /* MainTabBarViewController.swift in Sources */,
 				ED58B2BC2B66B99E004489C4 /* UserLocationViewController.swift in Sources */,
 				ED3512C32BAF04E20055222B /* MeasurementView.swift in Sources */,
+				ED049A2F2BCAAB3B000B18EA /* SettingsTableViewCell.swift in Sources */,
 				ED8115CD2B5BD1B30031BBC6 /* AppDelegate.swift in Sources */,
 				ED42F8E02B5BEF2B00F68230 /* IndicatorTableCell.swift in Sources */,
 				ED8115CF2B5BD1B30031BBC6 /* SceneDelegate.swift in Sources */,
 				ED42F8D52B5BEDAA00F68230 /* UITableViewExtension.swift in Sources */,
+				ED049A342BCAAD52000B18EA /* SettingsViewController.swift in Sources */,
 				ED42F8E22B5BEF5400F68230 /* BaseTableViewCell.swift in Sources */,
+				ED049A312BCAAB44000B18EA /* SettingsTableViewCellModel.swift in Sources */,
 				EDB90BBB2B652F65008EED9A /* UserDefaultsExtension.swift in Sources */,
 				ED42F8D82B5BEE3000F68230 /* TableViewStructure.swift in Sources */,
+				ED049A282BCA9A90000B18EA /* StringExtension.swift in Sources */,
+				ED049A362BCAAD5A000B18EA /* SettingsView.swift in Sources */,
 				ED3512C12BAF04200055222B /* MeasurementViewController.swift in Sources */,
+				ED049A412BCAB262000B18EA /* LanguageViewController+DataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		ED049A182BCA941E000B18EA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED049A192BCA941E000B18EA /* en */,
+				ED049A202BCA9626000B18EA /* ru */,
+				ED049A242BCA968F000B18EA /* kk-KZ */,
+				ED049A262BCA96D9000B18EA /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		ED8115D72B5BD1B40031BBC6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				ED8115D82B5BD1B40031BBC6 /* Base */,
+				ED049A162BCA9376000B18EA /* ru */,
+				ED049A232BCA968F000B18EA /* kk-KZ */,
+				ED049A252BCA96D9000B18EA /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -416,6 +519,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -479,6 +583,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

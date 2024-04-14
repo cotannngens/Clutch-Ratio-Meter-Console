@@ -15,10 +15,10 @@ struct OutputDataModel {
     var gpsMode: GpsMode?
     var latitudeDeg: UInt8?
     var latitudeMin: UInt8?
-    var latitudeMinFraq: UInt8?
+    var latitudeMinFraq: Float?
     var longitudeDeg: UInt8?
     var longitudeMin: UInt8?
-    var longitudeMinFraq: UInt8?
+    var longitudeMinFraq: Float?
     var latitudeLetter: UInt8?
     var longitudeLetter: UInt8?
     var battery: UInt8?

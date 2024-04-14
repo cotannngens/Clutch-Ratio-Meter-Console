@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  VKR
+
+  Created by Константин Хамицевич on 13.04.2024.
+  
+*/
+"settings_tab_bar" = "Settings";
+"measurement_tab_bar" = "Measurement";
+"bluetooth_tab_bar" = "Devices";
+"location_tab_bar" = "Location";
+"chart_no_data" = "No data available yet";
+"button_start" = "Start";
+"button_stop" = "Stop";
+"button_share" = "Share protocol";
+"no_devices" = "No devices available";
+"language" = "Language";
+

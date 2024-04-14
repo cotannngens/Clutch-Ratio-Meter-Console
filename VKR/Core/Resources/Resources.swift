@@ -14,5 +14,6 @@ enum Resources {
         static var settingsTabBarIcon = UIImage(systemName: "gearshape")
         static var userLocationTabBarIcon = UIImage(systemName: "mappin.circle")
         static var deviceConnectedIcon = UIImage(systemName: "circle.fill")?.withRenderingMode(.alwaysTemplate)
+        static var settingsDisclouserIcon = UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate)
     }
 }

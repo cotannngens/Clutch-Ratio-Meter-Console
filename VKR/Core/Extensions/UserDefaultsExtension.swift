@@ -11,6 +11,7 @@ extension UserDefaults {
 
     enum Keys: String, CaseIterable {
         case lastUsedDeviceId
+        case languageTranslationCode
     }
 
     static var lastUsedDeviceId: String {
@@ -19,6 +20,15 @@ extension UserDefaults {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.lastUsedDeviceId.rawValue)
+        }
+    }
+
+    static var languageTranslationCode: String? {
+        get {
+            return UserDefaults.standard.string(forKey: Keys.languageTranslationCode.rawValue) ?? LocalizationService.shared.getSystemLanguageCode()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.languageTranslationCode.rawValue)
         }
     }
 }

@@ -131,14 +131,14 @@ extension BluetoothManager: CBPeripheralDelegate {
             outputDataModel.gpsMode = GpsMode(rawValue: data[12])
             outputDataModel.latitudeDeg = data[13]
             outputDataModel.latitudeMin = data[14]
-            outputDataModel.latitudeMinFraq = data[15] * 100 + data[16]
+            outputDataModel.latitudeMinFraq = Float(data[15]) * 100 + Float(data[16])
             outputDataModel.longitudeDeg = data[17]
             outputDataModel.longitudeMin = data[18]
-            outputDataModel.longitudeMinFraq = data[19] * 100
+            outputDataModel.longitudeMinFraq = Float(data[19]) * 100
             dataRecieved?()
         } else if data.count == 6 {
             if let longitudeMinFraq = outputDataModel.longitudeMinFraq {
-                outputDataModel.longitudeMinFraq = longitudeMinFraq + data[0]
+                outputDataModel.longitudeMinFraq = longitudeMinFraq + Float(data[0])
             }
             outputDataModel.latitudeLetter = data[1]
             outputDataModel.longitudeLetter = data[2]
