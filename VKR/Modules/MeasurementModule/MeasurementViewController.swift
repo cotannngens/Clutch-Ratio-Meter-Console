@@ -17,7 +17,7 @@ final class MeasurementViewController: UIViewController {
             self?.measurementModel.chartOffsetX = 0
             self?.measurementModel.isMeasurementActive = isActive
             isActive ? self?.measurementModel.dataProtocol = [] : nil
-            self?.blueetoothManager.notifyPeripheral(isActive)
+            self?.blueetoothManager.isMeasurementActive = isActive
         }
         view.sendProtocolTapped = { [weak self] in
             self?.shareProtocol()
@@ -66,6 +66,7 @@ extension MeasurementViewController {
     }
 
     private func updateChart() {
+        measurementView.batteryCharge = Float(blueetoothManager.outputDataModel.battery ?? 0)
         guard let frictionCoeff = blueetoothManager.outputDataModel.frictionCoeff else { return }
         measurementModel.chartOffsetX += 1
         let dataEntry = ChartDataEntry(x: measurementModel.chartOffsetX, y: Double(frictionCoeff))

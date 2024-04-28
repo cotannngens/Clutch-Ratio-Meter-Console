@@ -84,6 +84,35 @@ final class MeasurementView: UIView {
         return view
     }()
 
+    private lazy var batteryLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        view.textColor = UIColor.commonBlack
+        view.textAlignment = .left
+        view.numberOfLines = 1
+        view.text = "battery_charge".translate()
+        return view
+    }()
+
+    private lazy var batteryProgressView: UIProgressView = {
+        let view = UIProgressView()
+        view.progressTintColor = .commonGreen
+        view.trackTintColor = .backgroundUpperLayer
+        view.layer.cornerRadius = 4
+        view.layer.masksToBounds = true
+        return view
+    }()
+
+    private lazy var batteryValueLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 14)
+        view.textColor = UIColor.commonBlack
+        view.textAlignment = .right
+        view.numberOfLines = 1
+        view.text = "0%"
+        return view
+    }()
+
     private var isMeasurementActive = false {
         didSet {
             updateUIWithMeasurementStatus()
@@ -96,11 +125,17 @@ final class MeasurementView: UIView {
         }
     }
 
+    var batteryCharge: Float = 0 {
+        didSet {
+            updateBatteryChargeProgressView()
+        }
+    }
+
     var isMeasurementAllowed = false {
         didSet {
             if !isMeasurementAllowed { isMeasurementActive = false }
             indicateSwitch.isEnabled = isMeasurementAllowed
-            indicateLabel.textColor = indicateSwitch.isEnabled ? .commonBlack : .gray
+            indicateLabel.textColor = isMeasurementAllowed ? .commonBlack : .gray
             if isMeasurementActive {
                 measurementStateButton.backgroundColor = UIColor.commonRed
             } else {
@@ -126,7 +161,8 @@ final class MeasurementView: UIView {
 
         addSubviews(
             chartView, noDataLabel, measurementStateButton,
-            sendProtocolButton, indicateLabel, indicateSwitch
+            sendProtocolButton, indicateLabel, indicateSwitch,
+            batteryLabel, batteryProgressView, batteryValueLabel
         )
 
         chartView.snp.makeConstraints { make in
@@ -139,15 +175,32 @@ final class MeasurementView: UIView {
             make.center.equalTo(chartView)
         }
 
-        indicateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(indicateSwitch)
-            make.trailing.equalTo(indicateSwitch.snp.leading).inset(-8)
+        batteryLabel.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualTo(chartView.snp.bottom).inset(-8)
+            make.trailing.equalTo(batteryProgressView.snp.leading).inset(-16)
             make.leading.equalToSuperview().inset(8)
+        }
+
+        batteryProgressView.snp.makeConstraints { make in
+            make.height.equalTo(8)
+            make.trailing.equalToSuperview().inset(8)
+            make.centerY.equalTo(batteryLabel)
+        }
+
+        batteryValueLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(batteryProgressView.snp.top).inset(-4)
+            make.trailing.equalTo(batteryProgressView)
         }
 
         indicateSwitch.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(8)
-            make.top.greaterThanOrEqualTo(chartView.snp.bottom).inset(-8)
+            make.top.equalTo(batteryLabel.snp.bottom).inset(-8)
+        }
+
+        indicateLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(indicateSwitch)
+            make.trailing.equalTo(indicateSwitch.snp.leading).inset(-8)
+            make.leading.equalToSuperview().inset(8)
         }
 
         measurementStateButton.snp.makeConstraints { make in
@@ -175,6 +228,19 @@ final class MeasurementView: UIView {
         chartView.leftAxis.axisMaximum = Double(UserDefaults.chartScaleY)
         chartView.data = LineChartData(dataSet: dataSet)
         noDataLabel.isHidden = !dataEntries.isEmpty
+    }
+
+    private func updateBatteryChargeProgressView() {
+        let progress = batteryCharge / 100
+        batteryProgressView.progress = progress
+        var progressColor: UIColor = .commonGreen
+        if progress < 0.5 && progress > 0.25 {
+            progressColor = .accent
+        } else if progress < 0.25 {
+            progressColor = .commonRed
+        }
+        batteryProgressView.progressTintColor = progressColor
+        batteryValueLabel.text = "\(Int(batteryCharge))%"
     }
 
     private func updateUIWithMeasurementStatus() {

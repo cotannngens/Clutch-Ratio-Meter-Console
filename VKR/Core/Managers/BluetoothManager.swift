@@ -15,6 +15,11 @@ final class BluetoothManager: NSObject {
 
     var currentPeripheral: CBPeripheral?
     var outputDataModel = OutputDataModel()
+    var isMeasurementActive = false {
+        didSet {
+            if isMeasurementActive { outputDataModel.locationCoordinates = [] }
+        }
+    }
     private var characteristic: CBCharacteristic?
     private var manager: CBCentralManager?
     private let serviceUUID = CBUUID(string: "0xFFE0")
@@ -36,15 +41,6 @@ final class BluetoothManager: NSObject {
             return
         }
         currentPeripheral.writeValue(Data([UInt8(isIndicating ? 252 : 253)]), for: writeCharacteristic, type: .withoutResponse)
-    }
-
-    func notifyPeripheral(_ isActive: Bool) {
-        guard let currentPeripheral = self.currentPeripheral,
-              let notifyCharacteristic = currentPeripheral.services?.compactMap({ $0.characteristics?.first(where: { $0.properties.contains(.notify) }) }).first else {
-            return
-        }
-        currentPeripheral.setNotifyValue(isActive, for: notifyCharacteristic)
-        if isActive { outputDataModel.locationCoordinates = [] }
     }
 
     override init() {
@@ -117,8 +113,13 @@ extension BluetoothManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
         characteristic = characteristics[0]
-        for characteristic in characteristics where characteristic.properties.contains(.read) {
-            peripheral.readValue(for: characteristic)
+        for characteristic in characteristics {
+            if characteristic.properties.contains(.read) {
+                peripheral.readValue(for: characteristic)
+            }
+            if characteristic.properties.contains(.notify) {
+                peripheral.setNotifyValue(true, for: characteristic)
+            }
         }
     }
 
@@ -153,7 +154,7 @@ extension BluetoothManager: CBPeripheralDelegate {
                let longitudeDeg = outputDataModel.longitudeDeg,
                let longitudeMin = outputDataModel.longitudeMin,
                let longitudeMinFraq = outputDataModel.longitudeMinFraq,
-               let longitudeLetter = outputDataModel.longitudeLetter {
+               let longitudeLetter = outputDataModel.longitudeLetter, isMeasurementActive {
                 let latitudeString = "\(latitudeDeg) \(latitudeMin + latitudeMinFraq) \(latitudeLetter)"
                 outputDataModel.latitudeString = latitudeString
                 let longitudeString = "\(longitudeDeg) \(longitudeMin + longitudeMinFraq) \(longitudeLetter)"

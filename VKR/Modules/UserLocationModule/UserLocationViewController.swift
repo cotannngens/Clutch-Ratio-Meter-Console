@@ -127,6 +127,7 @@ extension UserLocationViewController {
     }
 
     private func displayCoordinates() {
+        guard blueetoothManager.isMeasurementActive else { return }
         mapView.removeOverlays(mapView.overlays)
         let coordinates: [CLLocationCoordinate2D] = blueetoothManager.outputDataModel.locationCoordinates.compactMap { location in
             guard let latitude = extractLocationDegrees(from: location.0), let longitude = extractLocationDegrees(from: location.1) else { return nil }
