@@ -21,6 +21,9 @@ final class MeasurementViewController: UIViewController {
         view.sendProtocolTapped = { [weak self] in
             self?.shareProtocol()
         }
+        view.indicateSwitchTapped = { [weak self] isIndicating in
+            self?.blueetoothManager.indicate(isIndicating)
+        }
         return view
     }()
 

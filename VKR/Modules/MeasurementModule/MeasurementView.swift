@@ -65,6 +65,23 @@ final class MeasurementView: UIView {
         return view
     }()
 
+    private lazy var indicateLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        view.textColor = UIColor.commonBlack
+        view.textAlignment = .left
+        view.numberOfLines = 1
+        view.text = "indicate".translate()
+        return view
+    }()
+
+    private lazy var indicateSwitch: UISwitch = {
+        let view = UISwitch()
+        view.isEnabled = false
+        view.addTarget(self, action: #selector(indicate), for: .valueChanged)
+        return view
+    }()
+
     private var isMeasurementActive = false {
         didSet {
             updateUIWithMeasurementStatus()
@@ -80,6 +97,8 @@ final class MeasurementView: UIView {
     var isMeasurementAllowed = false {
         didSet {
             if !isMeasurementAllowed { isMeasurementActive = false }
+            indicateSwitch.isEnabled = isMeasurementAllowed
+            indicateLabel.textColor = indicateSwitch.isEnabled ? .commonBlack : .gray
             if isMeasurementActive {
                 measurementStateButton.backgroundColor = UIColor.commonRed
             } else {
@@ -90,6 +109,7 @@ final class MeasurementView: UIView {
 
     var measurementStatusChanged: ((Bool) -> Void)?
     var sendProtocolTapped: (() -> Void)?
+    var indicateSwitchTapped: ((Bool) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -102,7 +122,11 @@ final class MeasurementView: UIView {
         backgroundColor = UIColor.backgroundBottomLayer
         let safeArea = safeAreaLayoutGuide
 
-        addSubviews(chartView, noDataLabel, measurementStateButton, sendProtocolButton)
+        addSubviews(
+            chartView, noDataLabel, measurementStateButton,
+            sendProtocolButton, indicateLabel, indicateSwitch
+        )
+
         chartView.snp.makeConstraints { make in
             make.top.equalTo(safeArea)
             make.leading.trailing.equalToSuperview()
@@ -113,8 +137,19 @@ final class MeasurementView: UIView {
             make.center.equalTo(chartView)
         }
 
+        indicateLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(indicateSwitch)
+            make.trailing.equalTo(indicateSwitch.snp.leading).inset(-8)
+            make.leading.equalToSuperview().inset(8)
+        }
+
+        indicateSwitch.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(8)
+            make.top.greaterThanOrEqualTo(chartView.snp.bottom).inset(-8)
+        }
+
         measurementStateButton.snp.makeConstraints { make in
-            make.top.equalTo(chartView.snp.bottom).inset(-8)
+            make.top.equalTo(indicateSwitch.snp.bottom).inset(-16)
             make.height.equalTo(48)
             make.leading.trailing.equalToSuperview().inset(8)
         }
@@ -123,6 +158,7 @@ final class MeasurementView: UIView {
             make.top.equalTo(measurementStateButton.snp.bottom).inset(-16)
             make.height.equalTo(48)
             make.leading.trailing.equalToSuperview().inset(8)
+            make.bottom.equalTo(safeArea).inset(16)
         }
     }
 
@@ -155,6 +191,10 @@ final class MeasurementView: UIView {
 
     @objc private func sendProtocolButtonTapped() {
         sendProtocolTapped?()
+    }
+
+    @objc private func indicate() {
+        indicateSwitchTapped?(indicateSwitch.isOn)
     }
 
     required init?(coder: NSCoder) {

@@ -30,6 +30,14 @@ final class BluetoothManager: NSObject {
     var willStopScanning: (() -> Void)?
     var dataRecieved: (() -> Void)?
 
+    func indicate(_ isIndicating: Bool) {
+        guard let currentPeripheral = self.currentPeripheral,
+              let writeCharacteristic = currentPeripheral.services?.compactMap({ $0.characteristics?.first(where: { $0.properties.contains(.writeWithoutResponse) }) }).first else {
+            return
+        }
+        currentPeripheral.writeValue(Data([UInt8(isIndicating ? 252 : 253)]), for: writeCharacteristic, type: .withoutResponse)
+    }
+
     override init() {
         super.init()
         self.manager = CBCentralManager(delegate: self, queue: nil)
@@ -107,14 +115,6 @@ extension BluetoothManager: CBPeripheralDelegate {
 
             if characteristic.properties.contains(.notify) {
                 peripheral.setNotifyValue(true, for: characteristic)
-            }
-
-            if characteristic.properties.contains(.writeWithoutResponse) {
-
-            }
-
-            if characteristic.properties.contains(.write) {
-
             }
         }
     }

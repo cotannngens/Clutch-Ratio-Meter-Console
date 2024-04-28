@@ -32,7 +32,7 @@ final class LanguageViewController: UIViewController {
 
         updateStructure()
     }
-    
+
     internal func restartApp() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first else { return }
         window.rootViewController = MainTabBarViewController()
