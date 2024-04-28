@@ -65,17 +65,17 @@ extension MeasurementViewController {
     }
 
     private func updateChart() {
-        guard let force = blueetoothManager.outputDataModel.force else { return }
+        guard let frictionCoeff = blueetoothManager.outputDataModel.frictionCoeff else { return }
         measurementModel.chartOffsetX += 1
-        let dataEntry = ChartDataEntry(x: measurementModel.chartOffsetX, y: Double(force))
+        let dataEntry = ChartDataEntry(x: measurementModel.chartOffsetX, y: Double(frictionCoeff))
         measurementView.dataEntries.append(dataEntry)
     }
 
     private func fillDataProtocol() {
-        let force = blueetoothManager.outputDataModel.force ?? 0
+        let frictionCoeff = blueetoothManager.outputDataModel.frictionCoeff ?? 0
         let speed = blueetoothManager.outputDataModel.measuringWheelSpeed ?? 0
         let date = getCurrentDate()
-        measurementModel.dataProtocol.append("\(force) \(speed) \(date)")
+        measurementModel.dataProtocol.append("\(frictionCoeff) \(speed) \(date)")
     }
 
     private func getCurrentDate() -> String {
