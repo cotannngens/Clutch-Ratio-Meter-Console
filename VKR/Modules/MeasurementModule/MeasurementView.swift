@@ -16,15 +16,17 @@ final class MeasurementView: UIView {
         view.xAxis.gridColor = UIColor.gray.withAlphaComponent(0.5)
         view.xAxis.drawAxisLineEnabled = false
         view.xAxis.drawLabelsEnabled = false
+        view.scaleXEnabled = true
 
         view.leftAxis.gridColor = UIColor.gray.withAlphaComponent(0.5)
         view.leftAxis.drawAxisLineEnabled = false
         view.leftAxis.drawLabelsEnabled = true
+        view.leftAxis.axisMinimum = 0
+        view.scaleYEnabled = true
 
+        view.autoScaleMinMaxEnabled = false
         view.rightAxis.enabled = false
         view.legend.enabled = false
-        view.autoScaleMinMaxEnabled = true
-        view.scaleYEnabled = false
         view.doubleTapToZoomEnabled = true
         view.highlightPerTapEnabled = false
         view.highlightPerDragEnabled = false
@@ -164,12 +166,13 @@ final class MeasurementView: UIView {
 
     private func updateChartData() {
         let color = UIColor(named: UserDefaults.chartLineColor) ?? .accent
-        let dataSet = LineChartDataSet(entries: Array(dataEntries.suffix(100)), label: "")
+        let dataSet = LineChartDataSet(entries: Array(dataEntries.suffix(UserDefaults.chartScaleX)), label: "")
         dataSet.drawValuesEnabled = false
         dataSet.setColor(color)
         dataSet.lineWidth = 1
         dataSet.drawCirclesEnabled = false
         dataSet.mode = .cubicBezier
+        chartView.leftAxis.axisMaximum = Double(UserDefaults.chartScaleY)
         chartView.data = LineChartData(dataSet: dataSet)
         noDataLabel.isHidden = !dataEntries.isEmpty
     }

@@ -10,23 +10,43 @@ import UIKit
 extension SettingsViewController {
     internal func updateStructure() {
         let cellsStructure = TableViewStructure()
-        var cellModels: [BaseTableViewCellModel] = []
+        addSystemSection(cellsStructure)
+        addChartSection(cellsStructure)
+        structure = cellsStructure
+    }
 
+    private func addSystemSection(_ cellsStructure: TableViewStructure) {
         let languageModel = SettingsTableViewCellModel(title: "language".translate(), cellType: .mainSection)
         languageModel.tapAction = { [weak self] in
             self?.presentLanguageVC()
         }
-        cellModels.append(languageModel)
+        let systemCellsSection = TableViewSectionModel(cellModels: [languageModel])
+        cellsStructure.addSection(section: systemCellsSection)
+    }
+
+    private func addChartSection(_ cellsStructure: TableViewStructure) {
+        var chartCellModels: [BaseTableViewCellModel] = []
 
         let chartLineColorModel = SettingsTableViewCellModel(title: "chart_line_color".translate(), cellType: .mainSection)
         chartLineColorModel.tapAction = { [weak self] in
             self?.presentChartLineColorVC()
         }
-        cellModels.append(chartLineColorModel)
+        chartCellModels.append(chartLineColorModel)
 
-        let cellsSection = TableViewSectionModel(cellModels: cellModels)
-        cellsStructure.addSection(section: cellsSection)
-        structure = cellsStructure
+        let chartScaleYModel = SettingsTextFieldTableViewCellModel(title: "scale_y".translate(), value: UserDefaults.chartScaleY) { [weak self] value in
+            UserDefaults.chartScaleY = value
+            self?.updateStructure()
+        }
+        chartCellModels.append(chartScaleYModel)
+
+        let chartScaleXModel = SettingsTextFieldTableViewCellModel(title: "scale_x".translate(), value: UserDefaults.chartScaleX) { [weak self] value in
+            UserDefaults.chartScaleX = value
+            self?.updateStructure()
+        }
+        chartCellModels.append(chartScaleXModel)
+
+        var chartCellsSection = TableViewSectionModel(cellModels: chartCellModels)
+        cellsStructure.addSection(section: chartCellsSection)
     }
 }
 
@@ -50,9 +70,5 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let structure = structure else { return 60 }
         return structure.cellModel(for: indexPath).height
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }

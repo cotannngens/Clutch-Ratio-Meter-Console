@@ -14,6 +14,8 @@ extension UserDefaults {
         case lastUsedDeviceId
         case languageTranslationCode
         case chartLineColor
+        case chartScaleY
+        case chartScaleX
     }
 
     static var lastUsedDeviceId: String {
@@ -40,6 +42,26 @@ extension UserDefaults {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.chartLineColor.rawValue)
+        }
+    }
+
+    static var chartScaleY: Int {
+        get {
+            guard UserDefaults.standard.object(forKey: Keys.chartScaleY.rawValue) != nil else { return 100 }
+            return UserDefaults.standard.integer(forKey: Keys.chartScaleY.rawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.chartScaleY.rawValue)
+        }
+    }
+
+    static var chartScaleX: Int {
+        get {
+            guard UserDefaults.standard.object(forKey: Keys.chartScaleX.rawValue) != nil else { return 100 }
+            return UserDefaults.standard.integer(forKey: Keys.chartScaleX.rawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.chartScaleX.rawValue)
         }
     }
 }

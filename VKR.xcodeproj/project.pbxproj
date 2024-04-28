@@ -38,6 +38,8 @@
 		ED671A9D2BDE7BA100D07217 /* ChartLineColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED671A9C2BDE7BA100D07217 /* ChartLineColorView.swift */; };
 		ED671A9F2BDE7BAB00D07217 /* ChartLineColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED671A9E2BDE7BAB00D07217 /* ChartLineColorViewController.swift */; };
 		ED671AA12BDE7BBA00D07217 /* ChartLineColorViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED671AA02BDE7BBA00D07217 /* ChartLineColorViewController+DataSource.swift */; };
+		ED671AA42BDECD4B00D07217 /* SettingsTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED671AA32BDECD4B00D07217 /* SettingsTextFieldTableViewCell.swift */; };
+		ED671AA62BDECD5100D07217 /* SettingsTextFieldTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED671AA52BDECD5100D07217 /* SettingsTextFieldTableViewCellModel.swift */; };
 		ED8115CD2B5BD1B30031BBC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8115CC2B5BD1B30031BBC6 /* AppDelegate.swift */; };
 		ED8115CF2B5BD1B30031BBC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8115CE2B5BD1B30031BBC6 /* SceneDelegate.swift */; };
 		ED8115D12B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8115D02B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift */; };
@@ -91,6 +93,8 @@
 		ED671A9C2BDE7BA100D07217 /* ChartLineColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineColorView.swift; sourceTree = "<group>"; };
 		ED671A9E2BDE7BAB00D07217 /* ChartLineColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineColorViewController.swift; sourceTree = "<group>"; };
 		ED671AA02BDE7BBA00D07217 /* ChartLineColorViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartLineColorViewController+DataSource.swift"; sourceTree = "<group>"; };
+		ED671AA32BDECD4B00D07217 /* SettingsTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		ED671AA52BDECD5100D07217 /* SettingsTextFieldTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldTableViewCellModel.swift; sourceTree = "<group>"; };
 		ED8115C92B5BD1B30031BBC6 /* VKR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8115CC2B5BD1B30031BBC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED8115CE2B5BD1B30031BBC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 		ED42F8D62B5BEDD300F68230 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				ED671AA22BDECD2F00D07217 /* SettingsTextFieldTableViewCell */,
 				ED049A2D2BCAAB26000B18EA /* SettingsTableViewCell */,
 				ED42F8F02B5BF6D400F68230 /* BluetoothDeviceTableViewCell */,
 				ED42F8EF2B5BF6A000F68230 /* IndicatorTableViewCell */,
@@ -314,6 +319,15 @@
 				ED671AA02BDE7BBA00D07217 /* ChartLineColorViewController+DataSource.swift */,
 			);
 			path = ChartLineColorModule;
+			sourceTree = "<group>";
+		};
+		ED671AA22BDECD2F00D07217 /* SettingsTextFieldTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED671AA32BDECD4B00D07217 /* SettingsTextFieldTableViewCell.swift */,
+				ED671AA52BDECD5100D07217 /* SettingsTextFieldTableViewCellModel.swift */,
+			);
+			path = SettingsTextFieldTableViewCell;
 			sourceTree = "<group>";
 		};
 		ED8115C02B5BD1B30031BBC6 = {
@@ -479,6 +493,7 @@
 				ED3512BE2BAEEC240055222B /* OutputDataModel.swift in Sources */,
 				ED97B3FF2BC4A97D00159506 /* CommonButton.swift in Sources */,
 				ED42F8DC2B5BEEC700F68230 /* BaseTableViewCellModel.swift in Sources */,
+				ED671AA42BDECD4B00D07217 /* SettingsTextFieldTableViewCell.swift in Sources */,
 				ED049A2C2BCAAA48000B18EA /* LocalizationService.swift in Sources */,
 				EDB90BB92B651C95008EED9A /* BluetoothDevicesViewController+DataSource.swift in Sources */,
 				ED42F8FF2B5DAD1E00F68230 /* MainTabBarViewController.swift in Sources */,
@@ -486,6 +501,7 @@
 				ED3512C32BAF04E20055222B /* MeasurementView.swift in Sources */,
 				ED049A2F2BCAAB3B000B18EA /* SettingsTableViewCell.swift in Sources */,
 				ED8115CD2B5BD1B30031BBC6 /* AppDelegate.swift in Sources */,
+				ED671AA62BDECD5100D07217 /* SettingsTextFieldTableViewCellModel.swift in Sources */,
 				ED42F8E02B5BEF2B00F68230 /* IndicatorTableCell.swift in Sources */,
 				ED8115CF2B5BD1B30031BBC6 /* SceneDelegate.swift in Sources */,
 				ED42F8D52B5BEDAA00F68230 /* UITableViewExtension.swift in Sources */,
@@ -658,7 +674,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R9P5XJ6BZG;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VKR/Core/Resources/Info.plist;
@@ -690,7 +706,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R9P5XJ6BZG;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VKR/Core/Resources/Info.plist;

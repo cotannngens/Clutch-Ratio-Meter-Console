@@ -21,3 +21,5 @@
 "color_red" = "Қызыл";
 "color_green" = "Жасыл";
 "color_systemBlack" = "Жүйе қара";
+"scale_x" = "X шкаласы";
+"scale_y" = "Y шкаласы";

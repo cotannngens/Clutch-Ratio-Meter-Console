@@ -16,6 +16,8 @@ final class SettingsView: UIView {
         view.separatorStyle = .singleLine
         view.showsVerticalScrollIndicator = false
         view.registerWithType(cell: SettingsTableViewCell.self)
+        view.registerWithType(cell: SettingsTextFieldTableViewCell.self)
+        view.keyboardDismissMode = .onDrag
         return view
     }()
 

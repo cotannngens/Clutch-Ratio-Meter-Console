@@ -21,3 +21,5 @@
 "color_red" = "Красный";
 "color_green" = "Зеленый";
 "color_systemBlack" = "Системный черный";
+"scale_x" = "Масштаб X";
+"scale_y" = "Масштаб Y";
