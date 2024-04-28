@@ -17,6 +17,7 @@ final class MeasurementViewController: UIViewController {
             self?.measurementModel.chartOffsetX = 0
             self?.measurementModel.isMeasurementActive = isActive
             isActive ? self?.measurementModel.dataProtocol = [] : nil
+            self?.blueetoothManager.notifyPeripheral(isActive)
         }
         view.sendProtocolTapped = { [weak self] in
             self?.shareProtocol()
@@ -75,7 +76,9 @@ extension MeasurementViewController {
         let frictionCoeff = blueetoothManager.outputDataModel.frictionCoeff ?? 0
         let speed = blueetoothManager.outputDataModel.measuringWheelSpeed ?? 0
         let date = getCurrentDate()
-        measurementModel.dataProtocol.append("\(frictionCoeff) \(speed) \(date)")
+        let latitudeString = blueetoothManager.outputDataModel.latitudeString ?? ""
+        let longitudeString = blueetoothManager.outputDataModel.longitudeString ?? ""
+        measurementModel.dataProtocol.append("\(frictionCoeff) \(speed) \(date) \(latitudeString) \(longitudeString)")
     }
 
     private func getCurrentDate() -> String {

@@ -38,6 +38,15 @@ final class BluetoothManager: NSObject {
         currentPeripheral.writeValue(Data([UInt8(isIndicating ? 252 : 253)]), for: writeCharacteristic, type: .withoutResponse)
     }
 
+    func notifyPeripheral(_ isActive: Bool) {
+        guard let currentPeripheral = self.currentPeripheral,
+              let notifyCharacteristic = currentPeripheral.services?.compactMap({ $0.characteristics?.first(where: { $0.properties.contains(.notify) }) }).first else {
+            return
+        }
+        currentPeripheral.setNotifyValue(isActive, for: notifyCharacteristic)
+        if isActive { outputDataModel.locationCoordinates = [] }
+    }
+
     override init() {
         super.init()
         self.manager = CBCentralManager(delegate: self, queue: nil)
@@ -108,14 +117,8 @@ extension BluetoothManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
         characteristic = characteristics[0]
-        for characteristic in characteristics {
-            if characteristic.properties.contains(.read) {
-                peripheral.readValue(for: characteristic)
-            }
-
-            if characteristic.properties.contains(.notify) {
-                peripheral.setNotifyValue(true, for: characteristic)
-            }
+        for characteristic in characteristics where characteristic.properties.contains(.read) {
+            peripheral.readValue(for: characteristic)
         }
     }
 
@@ -129,11 +132,11 @@ extension BluetoothManager: CBPeripheralDelegate {
             outputDataModel.current = (Float(data[9]) * 100 + Float(data[10])) / 10.0
             outputDataModel.temperature = data[11] - 50
             outputDataModel.gpsMode = GpsMode(rawValue: data[12])
-            outputDataModel.latitudeDeg = data[13]
-            outputDataModel.latitudeMin = data[14]
+            outputDataModel.latitudeDeg = Int(data[13])
+            outputDataModel.latitudeMin = Float(data[14])
             outputDataModel.latitudeMinFraq = Float(data[15]) * 100 + Float(data[16])
-            outputDataModel.longitudeDeg = data[17]
-            outputDataModel.longitudeMin = data[18]
+            outputDataModel.longitudeDeg = Int(data[17])
+            outputDataModel.longitudeMin = Float(data[18])
             outputDataModel.longitudeMinFraq = Float(data[19]) * 100
             dataRecieved?()
         } else if data.count == 6 {
@@ -143,6 +146,20 @@ extension BluetoothManager: CBPeripheralDelegate {
             outputDataModel.latitudeLetter = data[1]
             outputDataModel.longitudeLetter = data[2]
             outputDataModel.battery = data[3]
+            if let latitudeDeg = outputDataModel.latitudeDeg,
+               let latitudeMin = outputDataModel.latitudeMin,
+               let latitudeMinFraq = outputDataModel.latitudeMinFraq,
+               let latitudeLetter = outputDataModel.latitudeLetter,
+               let longitudeDeg = outputDataModel.longitudeDeg,
+               let longitudeMin = outputDataModel.longitudeMin,
+               let longitudeMinFraq = outputDataModel.longitudeMinFraq,
+               let longitudeLetter = outputDataModel.longitudeLetter {
+                let latitudeString = "\(latitudeDeg) \(latitudeMin + latitudeMinFraq) \(latitudeLetter)"
+                outputDataModel.latitudeString = latitudeString
+                let longitudeString = "\(longitudeDeg) \(longitudeMin + longitudeMinFraq) \(longitudeLetter)"
+                outputDataModel.longitudeString = longitudeString
+                outputDataModel.locationCoordinates.append((latitudeString, longitudeString))
+            }
             dataRecieved?()
         }
     }

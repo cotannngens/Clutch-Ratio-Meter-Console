@@ -16,28 +16,37 @@ final class UserLocationViewController: UIViewController {
         view.delegate = self
         view.showsUserLocation = true
         view.userTrackingMode = .followWithHeading
+        view.showsCompass = true
         return view
     }()
 
+    private let blueetoothManager = BluetoothManager.shared
     private var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
+        bind()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         setupLocationManager()
+        displayCoordinates()
     }
 
     private func setupView() {
         view.backgroundColor = UIColor.backgroundBottomLayer
         view.addSubview(mapView)
-
         mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
+
+    private func bind() {
+        blueetoothManager.dataRecieved = { [weak self] in
+            self?.displayCoordinates()
+        }
     }
 
     private func setupLocationManager() {
@@ -77,9 +86,15 @@ final class UserLocationViewController: UIViewController {
 }
 
 extension UserLocationViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        mapView.userTrackingMode = .followWithHeading
-        mapView.showsCompass = true
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        switch overlay {
+        case let polyline as MKPolyline:
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = .accent
+            renderer.lineWidth = 5
+            return renderer
+        default: fatalError("Unexpected MKOverlay type")
+        }
     }
 }
 
@@ -90,5 +105,34 @@ extension UserLocationViewController: CLLocationManagerDelegate {
             showPermissionAlert()
         default: break
         }
+    }
+}
+
+extension UserLocationViewController {
+    private func extractLocationDegrees(from string: String) -> CLLocationDegrees? {
+        let components = string.components(separatedBy: " ")
+        guard components.count == 3 else { return nil }
+        let degreesString = components[0]
+        let minutesString = components[1]
+        let signChar = components[2]
+        var sign: Double = 1
+        switch signChar {
+        case "N", "E": sign = 1
+        case "S", "W": sign = -1
+        default: return nil
+        }
+        guard let degrees = Double(degreesString), let minutes = Double(minutesString) else { return nil }
+        let locationDegreesDouble = sign * (degrees + (minutes / 60))
+        return CLLocationDegrees(locationDegreesDouble)
+    }
+
+    private func displayCoordinates() {
+        mapView.removeOverlays(mapView.overlays)
+        let coordinates: [CLLocationCoordinate2D] = blueetoothManager.outputDataModel.locationCoordinates.compactMap { location in
+            guard let latitude = extractLocationDegrees(from: location.0), let longitude = extractLocationDegrees(from: location.1) else { return nil }
+            return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
+        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+        mapView.addOverlay(polyline)
     }
 }

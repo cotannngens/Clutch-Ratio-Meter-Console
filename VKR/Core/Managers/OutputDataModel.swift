@@ -13,15 +13,19 @@ struct OutputDataModel {
     var current: Float?
     var temperature: UInt8?
     var gpsMode: GpsMode?
-    var latitudeDeg: UInt8?
-    var latitudeMin: UInt8?
+    var latitudeDeg: Int?
+    var latitudeMin: Float?
     var latitudeMinFraq: Float?
-    var longitudeDeg: UInt8?
-    var longitudeMin: UInt8?
+    var longitudeDeg: Int?
+    var longitudeMin: Float?
     var longitudeMinFraq: Float?
     var latitudeLetter: UInt8?
     var longitudeLetter: UInt8?
     var battery: UInt8?
+
+    var latitudeString: String?
+    var longitudeString: String?
+    var locationCoordinates = [(String, String)]()
 }
 
 enum GpsMode: UInt8 {
