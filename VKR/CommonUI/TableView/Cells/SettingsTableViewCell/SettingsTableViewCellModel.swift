@@ -5,9 +5,12 @@
 //  Created by Константин Хамицевич on 13.04.2024.
 //
 
+import UIKit
+
 enum SettingsCellType {
     case mainSection
     case language(isSelected: Bool)
+    case chartLineColor(isSelected: Bool, color: UIColor?)
 }
 
 final class SettingsTableViewCellModel: BaseTableViewCellModel {

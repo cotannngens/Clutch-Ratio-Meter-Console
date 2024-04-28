@@ -37,4 +37,9 @@ final class SettingsViewController: UIViewController {
         let languageVC = LanguageViewController()
         present(languageVC, animated: true, completion: nil)
     }
+
+    internal func presentChartLineColorVC() {
+        let chartLineColorVC = ChartLineColorViewController()
+        present(chartLineColorVC, animated: true, completion: nil)
+    }
 }

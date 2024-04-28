@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 extension UserDefaults {
 
     enum Keys: String, CaseIterable {
         case lastUsedDeviceId
         case languageTranslationCode
+        case chartLineColor
     }
 
     static var lastUsedDeviceId: String {
@@ -29,6 +31,15 @@ extension UserDefaults {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.languageTranslationCode.rawValue)
+        }
+    }
+
+    static var chartLineColor: String {
+        get {
+            return UserDefaults.standard.string(forKey: Keys.chartLineColor.rawValue) ?? "accent"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.chartLineColor.rawValue)
         }
     }
 }

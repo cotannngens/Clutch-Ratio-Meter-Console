@@ -16,3 +16,8 @@
 "no_devices" = "无设备";
 "language" = "语言";
 "indicate" = "打开灯";
+"chart_line_color" = "图形线条颜色";
+"color_orange" = "橙子";
+"color_red" = "红色的";
+"color_green" = "绿色的";
+"color_systemBlack" = "系统黑";

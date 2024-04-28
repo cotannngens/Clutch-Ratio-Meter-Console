@@ -16,3 +16,8 @@
 "no_devices" = "Құрылғылар жоқ";
 "language" = "Тіл";
 "indicate" = "Жарықты қосу";
+"chart_line_color" = "Графикалық сызықтың түсі";
+"color_orange" = "Апельсин";
+"color_red" = "Қызыл";
+"color_green" = "Жасыл";
+"color_systemBlack" = "Жүйе қара";

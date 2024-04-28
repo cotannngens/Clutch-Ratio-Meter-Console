@@ -16,3 +16,8 @@
 "no_devices" = "Нет устройств";
 "language" = "Язык";
 "indicate" = "Включить индикатор";
+"chart_line_color" = "Цвет линии графика";
+"color_orange" = "Оранжевый";
+"color_red" = "Красный";
+"color_green" = "Зеленый";
+"color_systemBlack" = "Системный черный";

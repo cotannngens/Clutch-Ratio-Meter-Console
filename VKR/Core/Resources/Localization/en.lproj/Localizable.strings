@@ -16,4 +16,8 @@
 "no_devices" = "No devices available";
 "language" = "Language";
 "indicate" = "Turn on the light";
-
+"chart_line_color" = "Chart line color";
+"color_orange" = "Orange";
+"color_red" = "Red";
+"color_green" = "Green";
+"color_systemBlack" = "System black";

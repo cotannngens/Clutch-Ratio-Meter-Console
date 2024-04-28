@@ -56,10 +56,15 @@ final class SettingsTableViewCell: BaseTableViewCell {
         case .mainSection:
             stateImageView.image = Resources.Images.settingsDisclouserIcon
             stateImageView.tintColor = UIColor.gray.withAlphaComponent(0.5)
-        case .language(isSelected: let isSelected):
+        case .language(let isSelected):
             stateImageView.image = Resources.Images.deviceConnectedIcon
             stateImageView.tintColor = UIColor.commonGreen
             stateImageView.isHidden = !isSelected
+        case .chartLineColor(let isSelected, let color):
+            stateImageView.image = Resources.Images.deviceConnectedIcon
+            stateImageView.tintColor = UIColor.commonGreen
+            stateImageView.isHidden = !isSelected
+            titleLabel.textColor = color ?? .commonBlack
         }
     }
 

@@ -163,9 +163,10 @@ final class MeasurementView: UIView {
     }
 
     private func updateChartData() {
+        let color = UIColor(named: UserDefaults.chartLineColor) ?? .accent
         let dataSet = LineChartDataSet(entries: Array(dataEntries.suffix(100)), label: "")
         dataSet.drawValuesEnabled = false
-        dataSet.setColor(UIColor.accent)
+        dataSet.setColor(color)
         dataSet.lineWidth = 1
         dataSet.drawCirclesEnabled = false
         dataSet.mode = .cubicBezier

@@ -1,28 +1,30 @@
 //
-//  SettingsViewController+DataSource.swift
+//  ChartLineColorViewController+DataSource.swift
 //  VKR
 //
-//  Created by Константин Хамицевич on 13.04.2024.
+//  Created by Константин Хамицевич on 28.04.2024.
 //
 
 import UIKit
 
-extension SettingsViewController {
+extension ChartLineColorViewController {
     internal func updateStructure() {
         let cellsStructure = TableViewStructure()
-        var cellModels: [BaseTableViewCellModel] = []
-
-        let languageModel = SettingsTableViewCellModel(title: "language".translate(), cellType: .mainSection)
-        languageModel.tapAction = { [weak self] in
-            self?.presentLanguageVC()
+        let colors: [(String, String)] = [
+            ("accent", "color_orange".translate()),
+            ("commonRed", "color_red".translate()),
+            ("commonGreen", "color_green".translate()),
+            ("commonBlack", "color_systemBlack".translate())
+        ]
+        let cellModels: [BaseTableViewCellModel] = colors.map { color in
+            let isSelected = UserDefaults.chartLineColor == color.0
+            let model = SettingsTableViewCellModel(title: color.1, cellType: .chartLineColor(isSelected: isSelected, color: UIColor(named: color.0)))
+            model.tapAction = { [weak self] in
+                UserDefaults.chartLineColor = color.0
+                self?.updateStructure()
+            }
+            return model
         }
-        cellModels.append(languageModel)
-
-        let chartLineColorModel = SettingsTableViewCellModel(title: "chart_line_color".translate(), cellType: .mainSection)
-        chartLineColorModel.tapAction = { [weak self] in
-            self?.presentChartLineColorVC()
-        }
-        cellModels.append(chartLineColorModel)
 
         let cellsSection = TableViewSectionModel(cellModels: cellModels)
         cellsStructure.addSection(section: cellsSection)
@@ -30,7 +32,7 @@ extension SettingsViewController {
     }
 }
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChartLineColorViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let structure = structure else { return 0 }
