@@ -45,7 +45,7 @@ extension SettingsViewController {
         }
         chartCellModels.append(chartScaleXModel)
 
-        var chartCellsSection = TableViewSectionModel(cellModels: chartCellModels)
+        let chartCellsSection = TableViewSectionModel(cellModels: chartCellModels)
         cellsStructure.addSection(section: chartCellsSection)
     }
 }

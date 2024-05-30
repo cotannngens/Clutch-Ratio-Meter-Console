@@ -49,7 +49,9 @@ final class MeasurementViewController: UIViewController {
 
     private func bind() {
         blueetoothManager.dataRecieved = { [weak self] in
-            guard let self = self, self.measurementModel.isMeasurementActive else { return }
+            guard let self = self else { return }
+            self.measurementView.batteryCharge = Float(self.blueetoothManager.outputDataModel.battery ?? 0)
+            guard self.measurementModel.isMeasurementActive else { return }
             self.updateChart()
             self.fillDataProtocol()
         }
@@ -63,11 +65,11 @@ final class MeasurementViewController: UIViewController {
 extension MeasurementViewController {
     private func toggleMeasurementAllowed() {
         measurementView.isMeasurementAllowed = blueetoothManager.currentPeripheral != nil
+        if blueetoothManager.currentPeripheral == nil { measurementView.batteryCharge = 0 }
     }
 
     private func updateChart() {
-        measurementView.batteryCharge = Float(blueetoothManager.outputDataModel.battery ?? 0)
-        guard let frictionCoeff = blueetoothManager.outputDataModel.frictionCoeff else { return }
+        guard let frictionCoeff = blueetoothManager.outputDataModel.force else { return }
         measurementModel.chartOffsetX += 1
         let dataEntry = ChartDataEntry(x: measurementModel.chartOffsetX, y: Double(frictionCoeff))
         measurementView.dataEntries.append(dataEntry)

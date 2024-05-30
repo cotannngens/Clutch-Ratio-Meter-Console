@@ -139,7 +139,6 @@ extension BluetoothManager: CBPeripheralDelegate {
             outputDataModel.longitudeDeg = Int(data[17])
             outputDataModel.longitudeMin = Float(data[18])
             outputDataModel.longitudeMinFraq = Float(data[19]) * 100
-            dataRecieved?()
         } else if data.count == 6 {
             if let longitudeMinFraq = outputDataModel.longitudeMinFraq {
                 outputDataModel.longitudeMinFraq = longitudeMinFraq + Float(data[0])
