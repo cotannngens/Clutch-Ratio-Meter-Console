@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  VKR
+
+  Created by Константин Хамицевич on 13.04.2024.
+  
+*/
+"settings_tab_bar" = "定制";
+"measurement_tab_bar" = "测量";
+"bluetooth_tab_bar" = "设备";
+"location_tab_bar" = "地点";
+"chart_no_data" = "无数据";
+"button_start" = "开始";
+"button_stop" = "停止";
+"button_share" = "发送协议";
+"no_devices" = "无设备";
+"language" = "语言";
+"indicate" = "打开灯";
+"chart_line_color" = "图形线条颜色";
+"color_orange" = "橙子";
+"color_red" = "红色的";
+"color_green" = "绿色的";
+"color_systemBlack" = "系统黑";
+"scale_x" = "X 刻度";
+"scale_y" = "Y 刻度";
+"battery_charge" = "电池充电";

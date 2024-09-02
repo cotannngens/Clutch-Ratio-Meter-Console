@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  VKR
+
+  Created by Константин Хамицевич on 13.04.2024.
+  
+*/
+"settings_tab_bar" = "Параметрлері";
+"measurement_tab_bar" = "Өлшеу";
+"bluetooth_tab_bar" = "Құрылғылар";
+"location_tab_bar" = "Орналасқан жері";
+"chart_no_data" = "Мәлімет жоқ";
+"button_start" = "Бастау";
+"button_stop" = "Тоқта";
+"button_share" = "Протоколды жіберу";
+"no_devices" = "Құрылғылар жоқ";
+"language" = "Тіл";
+"indicate" = "Жарықты қосу";
+"chart_line_color" = "Графикалық сызықтың түсі";
+"color_orange" = "Апельсин";
+"color_red" = "Қызыл";
+"color_green" = "Жасыл";
+"color_systemBlack" = "Жүйе қара";
+"scale_x" = "X шкаласы";
+"scale_y" = "Y шкаласы";
+"battery_charge" = "Батарея заряды";

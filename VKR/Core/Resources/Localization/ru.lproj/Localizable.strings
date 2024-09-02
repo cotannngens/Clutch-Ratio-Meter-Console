@@ -1,0 +1,26 @@
+/* 
+ Localizable.strings
+  VKR
+
+  Created by Константин Хамицевич on 13.04.2024.
+  
+*/
+"settings_tab_bar" = "Настройки";
+"measurement_tab_bar" = "Измерение";
+"bluetooth_tab_bar" = "Устройства";
+"location_tab_bar" = "Местоположение";
+"chart_no_data" = "Нет данных";
+"button_start" = "Старт";
+"button_stop" = "Стоп";
+"button_share" = "Отправить протокол";
+"no_devices" = "Нет устройств";
+"language" = "Язык";
+"indicate" = "Включить индикатор";
+"chart_line_color" = "Цвет линии графика";
+"color_orange" = "Оранжевый";
+"color_red" = "Красный";
+"color_green" = "Зеленый";
+"color_systemBlack" = "Системный черный";
+"scale_x" = "Масштаб X";
+"scale_y" = "Масштаб Y";
+"battery_charge" = "Заряд батареи";
