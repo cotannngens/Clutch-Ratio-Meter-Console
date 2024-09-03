@@ -95,7 +95,7 @@
 		ED671AA02BDE7BBA00D07217 /* ChartLineColorViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartLineColorViewController+DataSource.swift"; sourceTree = "<group>"; };
 		ED671AA32BDECD4B00D07217 /* SettingsTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		ED671AA52BDECD5100D07217 /* SettingsTextFieldTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldTableViewCellModel.swift; sourceTree = "<group>"; };
-		ED8115C92B5BD1B30031BBC6 /* VKR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED8115C92B5BD1B30031BBC6 /* ClutchRatioMeterConsole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClutchRatioMeterConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8115CC2B5BD1B30031BBC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED8115CE2B5BD1B30031BBC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ED8115D02B5BD1B30031BBC6 /* BluetoothDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDevicesViewController.swift; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 		ED8115C02B5BD1B30031BBC6 = {
 			isa = PBXGroup;
 			children = (
-				ED8115CB2B5BD1B30031BBC6 /* VKR */,
+				ED8115CB2B5BD1B30031BBC6 /* ClutchRatioMeterConsole */,
 				ED8115CA2B5BD1B30031BBC6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -341,12 +341,12 @@
 		ED8115CA2B5BD1B30031BBC6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED8115C92B5BD1B30031BBC6 /* VKR.app */,
+				ED8115C92B5BD1B30031BBC6 /* ClutchRatioMeterConsole.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ED8115CB2B5BD1B30031BBC6 /* VKR */ = {
+		ED8115CB2B5BD1B30031BBC6 /* ClutchRatioMeterConsole */ = {
 			isa = PBXGroup;
 			children = (
 				ED42F8F72B5DA95100F68230 /* Application */,
@@ -355,7 +355,7 @@
 				ED42F8FC2B5DAC5E00F68230 /* Core */,
 				EDCDDDDB2B6684CA00272D05 /* .swiftlint.yml */,
 			);
-			path = VKR;
+			path = ClutchRatioMeterConsole;
 			sourceTree = "<group>";
 		};
 		EDA563802B5BD91E00207249 /* Extensions */ = {
@@ -372,9 +372,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ED8115C82B5BD1B30031BBC6 /* VKR */ = {
+		ED8115C82B5BD1B30031BBC6 /* ClutchRatioMeterConsole */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED8115DD2B5BD1B40031BBC6 /* Build configuration list for PBXNativeTarget "VKR" */;
+			buildConfigurationList = ED8115DD2B5BD1B40031BBC6 /* Build configuration list for PBXNativeTarget "ClutchRatioMeterConsole" */;
 			buildPhases = (
 				ED8115C52B5BD1B30031BBC6 /* Sources */,
 				ED8115C62B5BD1B30031BBC6 /* Frameworks */,
@@ -385,14 +385,14 @@
 			);
 			dependencies = (
 			);
-			name = VKR;
+			name = ClutchRatioMeterConsole;
 			packageProductDependencies = (
 				EDA563772B5BD62000207249 /* SnapKit */,
 				EDA5637C2B5BD62B00207249 /* ProgressHUD */,
 				ED3512C52BAF10BB0055222B /* DGCharts */,
 			);
 			productName = VKR;
-			productReference = ED8115C92B5BD1B30031BBC6 /* VKR.app */;
+			productReference = ED8115C92B5BD1B30031BBC6 /* ClutchRatioMeterConsole.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -410,7 +410,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ED8115C42B5BD1B30031BBC6 /* Build configuration list for PBXProject "VKR" */;
+			buildConfigurationList = ED8115C42B5BD1B30031BBC6 /* Build configuration list for PBXProject "ClutchRatioMeterConsole" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -431,7 +431,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ED8115C82B5BD1B30031BBC6 /* VKR */,
+				ED8115C82B5BD1B30031BBC6 /* ClutchRatioMeterConsole */,
 			);
 		};
 /* End PBXProject section */
@@ -677,7 +677,7 @@
 				DEVELOPMENT_TEAM = R9P5XJ6BZG;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VKR/Core/Resources/Info.plist;
+				INFOPLIST_FILE = ClutchRatioMeterConsole/Core/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -709,7 +709,7 @@
 				DEVELOPMENT_TEAM = R9P5XJ6BZG;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VKR/Core/Resources/Info.plist;
+				INFOPLIST_FILE = ClutchRatioMeterConsole/Core/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -734,7 +734,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ED8115C42B5BD1B30031BBC6 /* Build configuration list for PBXProject "VKR" */ = {
+		ED8115C42B5BD1B30031BBC6 /* Build configuration list for PBXProject "ClutchRatioMeterConsole" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED8115DB2B5BD1B40031BBC6 /* Debug */,
@@ -743,7 +743,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED8115DD2B5BD1B40031BBC6 /* Build configuration list for PBXNativeTarget "VKR" */ = {
+		ED8115DD2B5BD1B40031BBC6 /* Build configuration list for PBXNativeTarget "ClutchRatioMeterConsole" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED8115DE2B5BD1B40031BBC6 /* Debug */,
